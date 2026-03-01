@@ -86,7 +86,7 @@ The conventional filename is `zave.yaml`.
 Tenants should not define:
 
 - pipelines  
-- infrastructure topology  
+- infrastructure TAXONOMY  
 - networking rules  
 - cluster overlays  
 - security mechanics  
@@ -160,7 +160,7 @@ The workload contract defines:
 - persistence requirements  
 - exposure rules  
 
-Nothing outside the contract should influence workload topology.
+Nothing outside the contract should influence workload TAXONOMY.
 
 ---
 
@@ -176,7 +176,7 @@ CI pipelines are responsible only for:
 CI must not:
 
 - mutate cluster state directly  
-- define infrastructure topology  
+- define infrastructure TAXONOMY  
 - bypass GitOps  
 
 CI proposes. It does not enact.
@@ -189,7 +189,7 @@ GitOps owns:
 
 - workload lifecycle registration  
 - environment promotion state  
-- service routing topology  
+- service routing TAXONOMY  
 - capability activation  
 - cluster reconciliation  
 

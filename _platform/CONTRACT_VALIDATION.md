@@ -213,7 +213,7 @@ If a generator cannot derive required output from the contract, it must fail imm
 Generators must never:
 
 - infer missing fields
-- invent topology
+- invent TAXONOMY
 - silently assume defaults not declared or injected
 
 If generation requires interpretation, the schema is incomplete.

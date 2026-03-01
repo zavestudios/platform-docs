@@ -37,7 +37,7 @@ It does not replace per-repo documentation for service-specific implementation d
 - **GENERATOR_MODEL.md**  
   Generator semantics and template-driven behavior.
 
-- **REPO_TOPOLOGY.yaml**  
+- **REPO_TAXONOMY.yaml**  
   Machine-readable inventory of repository roles and dependencies.
 
 ## Precedence

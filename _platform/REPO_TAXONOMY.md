@@ -11,109 +11,150 @@ It exists to eliminate ambiguity for:
 - Change-scope analysis
 - Architectural governance
 
-Every repository must belong to exactly one type.
-
-If a repository does not clearly fit a type, the taxonomy must be updated explicitly.
+Every repository must belong to exactly one **category**.
 
 ---
 
-## Repository Types
+## Repository Categories
 
-### `platform-docs`
-Canonical architectural doctrine, operating model, and human-authored platform documentation.
+### `control-plane`
+Authoritative architectural doctrine, operating model, and governance contracts.
 
-These repositories define how the system works. They do not deploy infrastructure or workloads.
-
----
-
-### `platform-workflows`
-Reusable CI/CD workflows invoked by tenant repositories.
-
-These repositories define how changes move through the system. They are called via `workflow_call` and are not workload deployables themselves.
+These define how the system works.
+They do not deploy workloads or mutate infrastructure.
 
 ---
 
-### `platform-primitives`
-Foundational supply-chain artifacts such as base image factories or shared build systems.
+### `infrastructure`
+Repositories that define or mutate shared runtime substrate.
 
-These provide controlled infrastructure building blocks but are not tenant workloads.
-
----
-
-### `platform-infrastructure`
-Infrastructure provisioning code (cluster setup, configuration management, Terraform, GitOps state, etc.).
-
-These repositories own substrate and cluster-level resources.
+These may provision clusters, manage GitOps state, or configure shared infrastructure resources.
 
 ---
 
-### `platform-capabilities`
-Reusable workload-level capabilities (e.g., database provisioning modules).
+### `platform-service`
+Reusable capabilities consumed by tenants.
 
-These extend tenant workloads through controlled, declarative interfaces.
+These may include:
+- CI/CD workflows
+- Supply-chain primitives (image factories)
+- Shared workload-level capabilities (e.g., DB provisioning modules)
 
----
-
-### `tenant-workload`
-Application workloads deployed via the platform contract.
-
-These consume shared workflows and inherit governance automatically. They do not own infrastructure.
+They do not represent standalone business workloads.
 
 ---
 
-### `lab`
-Experimental repositories not governed by the platform contract.
+### `tenant`
+Deployable workloads governed by the platform contract.
 
-These are excluded from architectural invariants and do not represent the reference path.
+These consume shared workflows and inherit lifecycle and governance rules automatically.
+
 
 ---
 
 ### `portfolio`
-External-facing or personal projects not part of the IDP reference model.
-
-These exist within the organization but are not part of the platform architecture.
+External-facing or personal projects outside the platform reference model.
 
 ---
 
-## Repository Classification Table (Draft v0.1)
+## Repository Classification Table
 
-| Repository                          | Type                     | Deploys? | Consumes Shared Workflows? | Owns Infra? | Notes |
-|--------------------------------------|--------------------------|----------|----------------------------|-------------|-------|
-| `zavestudios`                       | platform-docs            | No       | No                         | No          | Canonical doctrine and documentation hub |
-| `platform-pipelines`                | platform-workflows       | No       | N/A                        | No          | Reusable GitHub Actions workflows |
-| `image-factory`                     | platform-primitives      | Yes      | Possibly                   | Yes         | Base image supply chain |
-| `kubernetes-platform-infrastructure`| platform-infrastructure  | Yes      | No                         | Yes         | Cluster provisioning |
-| `ansible`                           | platform-infrastructure  | Yes      | No                         | Yes         | Configuration management |
-| `db-tenant-rds-terraform`           | platform-capabilities    | Yes      | No                         | Yes         | Database provisioning module |
-| `gitops`                            | platform-infrastructure  | Yes      | Possibly                   | Yes         | Authoritative cluster desired state (Flux reconciled). |
-| `data-pipelines`                    | tenant-workload          | Yes      | Yes                        | No          | Data workload example |
-| `rigoberta`                         | tenant-workload          | Yes      | Yes                        | No          | Application workload |
-| `panchito`                          | tenant-workload          | Yes      | Yes                        | No          | Application workload |
-| `thehouseguy`                       | tenant-workload          | Yes      | Yes                        | No          | Application workload |
-| `oracle`                            | tenant-workload (TBD)    | Yes?     | Yes?                       | No?         | Requires clarification |
-| `python`                            | lab                      | No       | No                         | No          | Experimental |
-| `pg`                                | lab                      | No       | No                         | No          | Postgres experimentation |
-| `xavierlopez.me`                    | portfolio                | Yes      | No                         | No          | Personal site |
-| `bigbang`                           | platform-infrastructure  | Yes      | No                         | Yes         | OSS tool chain |
+| Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
+|------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
+| `platform-docs` | control-plane | No | No | Yes | No |
+| `platform-pipelines` | platform-service | No | No | Yes | No |
+| `image-factory` | platform-service | No | No | Yes | Yes |
+| `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
+| `ansible` | infrastructure | No | Yes | No | No |
+| `gitops` | infrastructure | No | Yes | No | Possibly |
+| `bigbang` | infrastructure | No | Yes | No | No |
+| `data-pipelines` | tenant | Yes | No | No | Yes |
+| `rigoberta` | tenant | Yes | No | No | Yes |
+| `panchito` | tenant | Yes | No | No | Yes |
+| `thehouseguy` | tenant | Yes | No | No | Yes |
+| `oracle` | tenant | Yes | No | No | Yes |
+| `mia` | tenant | Yes | No | No | Yes |
+| `xavierlopez.me` | portfolio | Yes | No | No | Yes |
+| `zavestudios` | portfolio | Yes | No | No | Yes |
+| `pg` | platform-service | No | No | Yes | Possibly |
+
+---
+
+## Classification Notes
+
+### Portfolio Repositories
+
+**`zavestudios`**
+- Public documentation and marketing site (zavestudios.com)
+- Deploys Hugo static site using shared platform workflows
+- Does not follow full platform contract model (no zave.yaml)
+- Consumes platform-pipelines workflows for deployment
+- Classified as `portfolio` (external-facing project, not platform-governed workload)
+
+**`xavierlopez.me`**
+- Personal portfolio site (Jekyll)
+- Uses platform-pipelines shared workflows for CI/CD
+- Does not follow full platform contract model (no zave.yaml)
+- Classified as `portfolio` (external-facing project)
+- Not subject to full platform lifecycle governance
+
+### Future Tenants
+
+**`mia`**
+- OpenClaw AI assistant workload (not yet created)
+- Will be hosted in Kubernetes as platform-governed tenant
+- Reserved in taxonomy for future deployment
+
+### Portfolio Contract Migration
+
+**Current State (Formation v0.1):**
+- Portfolio repositories (`xavierlopez.me`, `zavestudios`) consume shared workflows but do not follow the platform contract model
+- Classified as `portfolio` to indicate external-facing projects with partial governance
+- Currently lack `zave.yaml` and contract validation
+
+**Target State:**
+- Portfolio repositories should be migrated to contract-governed model
+- Contract schema already reserves `spec.runtime: static` for static site workloads
+- Example target contract:
+  ```yaml
+  apiVersion: zave.io/v1
+  kind: Workload
+  metadata:
+    name: zavestudios-com
+  spec:
+    runtime: static
+    exposure: public-http
+    delivery: rolling
+  ```
+
+**Rationale:**
+- Formation phase exit criteria: "≥80% of workloads deploy via the contract without repo design decisions"
+- If portfolio sites cannot use the contract model, that indicates platform incompleteness, not valid exception
+- Proves contract model works for all workload types, not just applications
+- Eliminates special-case workflows and governance exceptions
+
+**Classification Decision:**
+- Once contract-governed, portfolio repositories may be reclassified as `tenant` (contract-governed workloads)
+- Alternatively, may remain `portfolio` with notation "contract-governed portfolio workload"
+- Decision to be formalized in future ADR
 
 ---
 
 ## Governance Rules
 
-1. Repository type must be declared at the top of each repository README.
-2. Reclassification requires explicit update to this file.
-3. Only `tenant-workload` repositories may consume `platform-workflows`.
-4. Only `platform-infrastructure` repositories may mutate cluster-level resources.
-5. `lab` and `portfolio` repositories are excluded from platform invariants.
+1. Repository category is declared authoritatively in `REPO_TAXONOMY`.
 
----
+2. Each repository README should reflect its declared category for local clarity, but the taxonomy file remains the canonical source of truth.
 
-## Intent
+3. Reclassification of any repository requires an explicit update to `REPO_TAXONOMY` via pull request.
 
-This taxonomy makes the system readable.
+4. Only `infrastructure` repositories may mutate shared infrastructure state.
 
-Agents and humans must consult this document before performing cross-repo changes.
+5. Only `tenant` repositories may deploy runtime workloads.
 
-Ambiguity is architectural debt.
-Classification is constraint.
-Constraint produces clarity.
+6. `platform-service` repositories provide reusable capabilities and must not define independent business workloads.
+
+7. `portfolio` repositories are excluded from platform invariants unless explicitly promoted into a governed category.
+
+Ambiguity is architectural debt.  
+Classification changes must be deliberate and reviewable.

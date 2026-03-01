@@ -3,7 +3,7 @@
 This document defines the **authoritative workload contract** for the ZaveStudios platform.
 
 The contract is the sole tenant interface to the platform.  
-Repositories, pipelines, infrastructure, and runtime topology must be derived from this file.
+Repositories, pipelines, infrastructure, and runtime TAXONOMY must be derived from this file.
 
 If something cannot be expressed in this schema, it is not part of the supported platform surface.
 
@@ -41,7 +41,7 @@ The schema is designed to enforce the following constraints:
 - Tenants declare **intent**, not implementation
 - Platform mechanics must be derivable automatically
 - Allowed variance must be bounded and enumerable
-- Runtime topology must remain predictable
+- Runtime TAXONOMY must remain predictable
 - Governance must be enforceable statically
 
 The contract must therefore remain:
@@ -164,7 +164,7 @@ This determines:
 - ingress configuration
 - service mesh policy
 - DNS behavior
-- routing topology
+- routing TAXONOMY
 
 No custom ingress configuration is allowed outside this field.
 
@@ -248,16 +248,16 @@ Capabilities are:
 
 Capability classes:
 
-- Feature capabilities (do not change topology), e.g.:
+- Feature capabilities (do not change TAXONOMY), e.g.:
   - metrics
   - tracing
-- Topology capabilities (change deployable shape), e.g.:
+- TAXONOMY capabilities (change deployable shape), e.g.:
   - job-runner
   - cron
   - queue-consumer
 
 v0.1 allows only feature capabilities.  
-Topology capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
+TAXONOMY capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
 
 ---
 
@@ -364,7 +364,7 @@ The contract intentionally does not allow:
 - custom image references
 - custom ingress objects
 - custom cluster resources
-- manual network topology
+- manual network TAXONOMY
 - arbitrary environment overlays
 
 These are platform responsibilities.
@@ -380,7 +380,7 @@ Every downstream system must derive from it:
 - repo scaffolding
 - pipeline generation
 - GitOps composition
-- runtime topology
+- runtime TAXONOMY
 - governance enforcement
 
 If a behavior cannot be derived from the contract, it should not exist in the platform.
