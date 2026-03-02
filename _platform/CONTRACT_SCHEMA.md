@@ -2,7 +2,7 @@
 
 This document defines the **authoritative workload contract** for the ZaveStudios platform.
 
-The contract is the sole tenant interface to the platform.  
+The contract is the sole workload interface to the platform (tenant and portfolio).  
 Repositories, pipelines, infrastructure, and runtime TAXONOMY must be derived from this file.
 
 If something cannot be expressed in this schema, it is not part of the supported platform surface.
@@ -38,7 +38,7 @@ Contract constraints:
 
 The schema is designed to enforce the following constraints:
 
-- Tenants declare **intent**, not implementation
+- Workloads declare **intent**, not implementation
 - Platform mechanics must be derivable automatically
 - Allowed variance must be bounded and enumerable
 - Runtime TAXONOMY must remain predictable
@@ -116,10 +116,16 @@ Declared values:
 
 Contract version support (Formation / v0.1):
 
-- Implemented: `container`
-- Reserved for future versions: `node`, `python`, `go`, `java`, `static`
+- Implemented: `container`, `static`
+- Reserved for future versions: `node`, `python`, `go`, `java`
 
 This value determines runtime policy, probe defaults, and compatibility checks.
+
+For static-site workloads (`spec.runtime: static`):
+
+- The repository remains fully contract-governed.
+- Delivery semantics, validation gates, and lifecycle rules are unchanged.
+- Runtime profile differs (static artifact serving vs long-lived app process), not governance level.
 
 ---
 
@@ -199,7 +205,7 @@ When implemented, strategy controls:
 - rollback behavior
 - promotion semantics
 
-Tenants must not define deployment YAML directly.
+Workload repositories must not define deployment YAML directly.
 
 ---
 

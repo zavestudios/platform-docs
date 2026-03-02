@@ -9,7 +9,7 @@ It exists to eliminate variance in:
 - Debugging practices
 - Development-to-production parity
 
-Every tenant repository must follow these standards.
+Every contract-governed workload repository (`tenant` and `portfolio`) must follow these standards.
 
 ---
 
@@ -29,15 +29,15 @@ If every repository requires different setup steps, the platform creates cogniti
 
 ### Mandatory Requirement: docker-compose
 
-All tenant repositories must provide a **docker-compose-based local development environment**.
+All contract-governed workload repositories must provide a **docker-compose-based local development environment**.
 
-This is non-negotiable for tenant repositories classified in REPO_TAXONOMY.md.
+This is non-negotiable for workload repositories classified as `tenant` or `portfolio` in REPO_TAXONOMY.md.
 
 ---
 
 ### Required Files
 
-Every tenant repository must include:
+Every contract-governed workload repository must include:
 
 #### 1. `docker-compose.yml`
 
@@ -407,9 +407,9 @@ Generator derives:
 
 Until the Stage 1 generator exists, developers must manually create docker-compose configuration.
 
-**Minimum Tenant Scaffold requirement** (see Issue #1):
+**Minimum Workload Scaffold requirement** (see Issue #1):
 
-Every new tenant repository must include:
+Every new contract-governed workload repository must include:
 - `docker-compose.yml`
 - `.env.example`
 - README "Local Development" section
@@ -420,7 +420,7 @@ These must be created manually and follow the standards in this document.
 
 ## Testing Standard
 
-All tenant repositories should support running tests via docker-compose.
+All contract-governed workload repositories should support running tests via docker-compose.
 
 **Recommended pattern:**
 
@@ -531,7 +531,7 @@ services:
 docker-compose --profile observability up
 ```
 
-This is optional but encouraged for platform-services and complex tenants.
+This is optional but encouraged for platform-services and complex workload repositories.
 
 ---
 
@@ -541,7 +541,7 @@ This is optional but encouraged for platform-services and complex tenants.
 
 During Formation, compliance is verified through:
 - Pull request reviews
-- Checklist: "Does this tenant have docker-compose?"
+- Checklist: "Does this workload repository have docker-compose?"
 - Reference to this document in review comments
 
 **Automated Validation (Target State):**
@@ -561,7 +561,7 @@ When contract validation is automated (see CONTRACT_VALIDATION.md), checks shoul
 Developer experience standard succeeds when:
 
 - **Zero-step local setup:** New contributors run `git clone && docker-compose up`
-- **Identical across repos:** Every tenant has same onboarding process
+- **Identical across repos:** Every contract-governed workload repo has same onboarding process
 - **Production parity:** Local containers match production runtime
 - **No platform-specific docs:** Works on Mac/Linux/Windows identically
 - **Debuggable:** Developers can attach debuggers, view logs, inspect state
@@ -572,7 +572,7 @@ Developer experience standard succeeds when:
 
 - PLATFORM_OPERATING_MODEL.md — "Constrained path must always be faster"
 - ARCHITECTURAL_DOCTRINE_TIER0.md — Variance reduction principle
-- CONTRACT_SCHEMA.md — `spec.runtime: container` implies containerized dev
+- CONTRACT_SCHEMA.md — runtime profiles are contract-declared; local development remains containerized via docker-compose
 - GENERATOR_MODEL.md — Stage 1 should generate docker-compose
 - REPO_TAXONOMY.md — Defines which repos must follow this standard
 

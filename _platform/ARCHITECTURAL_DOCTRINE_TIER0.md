@@ -12,7 +12,7 @@ It models how elite IDPs convert infrastructure from an ongoing design problem i
 
 **Unbounded architectural variance across workloads.**
 
-Variance in build pipelines, deployment mechanics, data provisioning, networking TAXONOMY, and governance leads to entropy, fragility, and platform teams devolving into reactive support functions.
+Variance in build pipelines, deployment mechanics, data provisioning, network topology, and governance leads to entropy, fragility, and platform teams devolving into reactive support functions.
 
 ZaveStudios exists to eliminate variance in infrastructure composition while preserving autonomy in application logic.
 

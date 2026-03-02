@@ -90,7 +90,7 @@ Occurs before merge into GitOps.
 Checks:
 
 - Exposure complies with environment policy
-- Resource tier allowed for tenant classification
+- Resource tier allowed for workload classification (`tenant` or `portfolio`)
 - Persistence permitted in that environment
 - Required capabilities automatically injected
 - Security baseline satisfied
@@ -180,7 +180,8 @@ This matrix is normative for validation outcomes.
 | Contract Field | Declared Values | v0.1 Support | Validation Behavior |
 | --- | --- | --- | --- |
 | `spec.runtime` | `container` | Implemented | Accepted |
-| `spec.runtime` | `node/python/go/java/static` | Reserved | Rejected with compatibility error |
+| `spec.runtime` | `static` | Implemented | Accepted |
+| `spec.runtime` | `node/python/go/java` | Reserved | Rejected with compatibility error |
 | `spec.delivery` | `rolling` | Implemented | Accepted |
 | `spec.delivery` | `recreate/blue-green/canary` | Reserved | Rejected with compatibility error |
 | `spec.build.mode` | `dockerfile` | Implemented | Accepted |

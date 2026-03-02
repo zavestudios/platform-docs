@@ -40,7 +40,7 @@ Until these stabilize, new capability growth should be constrained.
 | Capability | Formation v0.1 (Implemented) | Target State |
 | --- | --- | --- |
 | Canonical contract shape | Yes (`apiVersion/kind/metadata/spec`) | Stable across versions |
-| Runtime support | `container` | Managed runtime families (`node/python/go/java/static`) |
+| Runtime support | `container`, `static` | Managed runtime families (`node/python/go/java`) |
 | Build mode | `dockerfile` | Additional managed build modes |
 | Delivery strategies | `rolling` | `recreate`, `blue-green`, `canary` |
 | Bootstrap command | Template/manual scaffolding | `zave init <workload-type>` |
@@ -63,9 +63,9 @@ Only after these conditions hold should capability expansion accelerate.
 
 # Contract-First Bootstrap Specification
 
-## Tenant Input Surface
+## Workload Input Surface
 
-A tenant workload must be expressible using a minimal declarative contract.
+A workload (tenant or portfolio) must be expressible using a minimal declarative contract.
 
 Example:
 
@@ -80,10 +80,10 @@ spec:
   delivery: rolling
 ```
 
-This Workload Contract object is the only required platform interface.
+This Workload Contract object is the only required platform interface for deployable workloads.
 The conventional filename is `zave.yaml`.
 
-Tenants should not define:
+Workload repositories should not define:
 
 - pipelines  
 - infrastructure TAXONOMY  
@@ -110,7 +110,7 @@ From the contract, the platform must deterministically generate:
 7. Baseline observability wiring  
 8. Policy and security controls  
 
-The tenant declares intent.  
+The workload repository declares intent.  
 The platform materializes execution.
 
 ---
@@ -139,6 +139,12 @@ Formation roadmap hook:
 
 - Until `zave init` exists, onboarding may use templates and manual PR scaffolding.
 - Any manual bootstrap step must map to a future generator behavior.
+
+Portfolio workload migration hook:
+
+- External-facing repositories (for example Hugo/Jekyll sites) are not governance exceptions.
+- These workloads should migrate to contract-backed delivery (`spec.runtime: static`) and GitOps registration.
+- Until migration completes, gaps must be tracked explicitly as Formation conformance debt.
 
 ---
 
