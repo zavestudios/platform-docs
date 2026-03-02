@@ -53,7 +53,10 @@ These consume shared workflows and inherit lifecycle and governance rules automa
 ---
 
 ### `portfolio`
-External-facing or personal projects outside the platform reference model.
+External-facing workloads (marketing sites, portfolios, public docs) that
+remain fully governed by platform contracts and lifecycle rules.
+
+Portfolio is a presentation/domain classification, not a governance exemption.
 
 ---
 
@@ -87,16 +90,14 @@ External-facing or personal projects outside the platform reference model.
 **`zavestudios`**
 - Public documentation and marketing site (zavestudios.com)
 - Deploys Hugo static site using shared platform workflows
-- Does not follow full platform contract model (no zave.yaml)
-- Consumes platform-pipelines workflows for deployment
-- Classified as `portfolio` (external-facing project, not platform-governed workload)
+- Classified as `portfolio` (external-facing workload)
+- Must follow the same contract, validation, and lifecycle model as tenant workloads
 
 **`xavierlopez.me`**
 - Personal portfolio site (Jekyll)
 - Uses platform-pipelines shared workflows for CI/CD
-- Does not follow full platform contract model (no zave.yaml)
-- Classified as `portfolio` (external-facing project)
-- Not subject to full platform lifecycle governance
+- Classified as `portfolio` (external-facing workload)
+- Must follow the same contract, validation, and lifecycle model as tenant workloads
 
 ### Future Tenants
 
@@ -105,16 +106,20 @@ External-facing or personal projects outside the platform reference model.
 - Will be hosted in Kubernetes as platform-governed tenant
 - Reserved in taxonomy for future deployment
 
-### Portfolio Contract Migration
+### Portfolio Contract Governance
 
-**Current State (Formation v0.1):**
-- Portfolio repositories (`xavierlopez.me`, `zavestudios`) consume shared workflows but do not follow the platform contract model
-- Classified as `portfolio` to indicate external-facing projects with partial governance
-- Currently lack `zave.yaml` and contract validation
+**Governance Requirement (Formation v0.1+):**
+- Portfolio repositories are contract-governed workloads.
+- Portfolio repositories must declare `zave.yaml` and pass the same validation/lifecycle gates as tenant repositories.
+- Portfolio repositories may differ in runtime profile (for example `spec.runtime: static`) but not governance level.
 
-**Target State:**
-- Portfolio repositories should be migrated to contract-governed model
-- Contract schema already reserves `spec.runtime: static` for static site workloads
+**Current Migration Gap:**
+- `xavierlopez.me` and `zavestudios` currently lack `zave.yaml`.
+- This is a temporary conformance gap in Formation, not a permanent exception.
+- Gap closure should be tracked explicitly until both repositories are contract-backed.
+
+**Runtime Profile for Portfolio Workloads:**
+- Contract schema supports `spec.runtime: static` for static site workloads.
 - Example target contract:
   ```yaml
   apiVersion: zave.io/v1
@@ -129,14 +134,14 @@ External-facing or personal projects outside the platform reference model.
 
 **Rationale:**
 - Formation phase exit criteria: "≥80% of workloads deploy via the contract without repo design decisions"
-- If portfolio sites cannot use the contract model, that indicates platform incompleteness, not valid exception
-- Proves contract model works for all workload types, not just applications
-- Eliminates special-case workflows and governance exceptions
+- If portfolio sites cannot use the contract model, that indicates platform incompleteness, not a valid exception.
+- Proves contract model works for all workload types, not just API/services.
+- Eliminates special-case workflow and governance carve-outs.
 
 **Classification Decision:**
-- Once contract-governed, portfolio repositories may be reclassified as `tenant` (contract-governed workloads)
-- Alternatively, may remain `portfolio` with notation "contract-governed portfolio workload"
-- Decision to be formalized in future ADR
+- Repositories may remain `portfolio` for audience/domain clarity.
+- `portfolio` does not change enforcement strength.
+- Reclassification to `tenant` is optional and should be based on organizational clarity, not governance needs.
 
 ---
 
@@ -150,11 +155,11 @@ External-facing or personal projects outside the platform reference model.
 
 4. Only `infrastructure` repositories may mutate shared infrastructure state.
 
-5. Only `tenant` repositories may deploy runtime workloads.
+5. Only `tenant` and `portfolio` repositories may deploy runtime workloads.
 
 6. `platform-service` repositories provide reusable capabilities and must not define independent business workloads.
 
-7. `portfolio` repositories are excluded from platform invariants unless explicitly promoted into a governed category.
+7. `portfolio` repositories are subject to the same platform invariants as `tenant` repositories.
 
 Ambiguity is architectural debt.  
 Classification changes must be deliberate and reviewable.

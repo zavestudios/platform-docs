@@ -37,7 +37,7 @@ Each state corresponds to a deterministic platform action.
 
 Entry condition:
 
-- Tenant creates or edits a contract file in a repository
+- A workload repository owner creates or edits a contract file in a repository
 
 Characteristics:
 
@@ -197,7 +197,7 @@ Contract version transition behavior:
 
 - Contract schema version upgrades follow:
   `Draft → Validated (migration + compatibility checks) → Generated → Updated`
-- Tenant-authored manual rewrites for version upgrades are not allowed.
+- Workload-repository-authored manual rewrites for version upgrades are not allowed.
 
 ---
 
@@ -206,7 +206,7 @@ Contract version transition behavior:
 Entry condition:
 
 - Workload intentionally paused
-- Tenant or platform policy triggers suspension
+- Repository owner or platform policy triggers suspension
 
 Actions performed:
 
