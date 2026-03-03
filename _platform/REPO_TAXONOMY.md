@@ -60,6 +60,15 @@ Portfolio is a presentation/domain classification, not a governance exemption.
 
 ---
 
+### `index`
+Repository discovery and navigation surfaces.
+
+These repositories may provide pointers, context, and links for humans and agents.
+They are explicitly non-authoritative and must not define governance doctrine,
+contract schema, lifecycle semantics, or implementation mechanics.
+
+---
+
 ## Repository Classification Table
 
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
@@ -80,6 +89,7 @@ Portfolio is a presentation/domain classification, not a governance exemption.
 | `xavierlopez.me` | portfolio | Yes | No | No | Yes |
 | `zavestudios` | portfolio | Yes | No | No | Yes |
 | `pg` | platform-service | No | No | Yes | Possibly |
+| `zavestudios-architecture` | index | No | No | No | No |
 
 ---
 
@@ -92,6 +102,14 @@ Portfolio is a presentation/domain classification, not a governance exemption.
 - Deploys Hugo static site using shared platform workflows
 - Classified as `portfolio` (external-facing workload)
 - Must follow the same contract, validation, and lifecycle model as tenant workloads
+
+### Index Repositories
+
+**`zavestudios-architecture`**
+- Landing/index repository for GitHub discovery
+- Points to canonical documentation and active workload/governance repositories
+- Classified as `index` (non-authoritative navigation surface)
+- Must not define governance doctrine, contract schema, lifecycle rules, or platform mechanics
 
 **`xavierlopez.me`**
 - Personal portfolio site (Jekyll)
@@ -160,6 +178,8 @@ Portfolio is a presentation/domain classification, not a governance exemption.
 6. `platform-service` repositories provide reusable capabilities and must not define independent business workloads.
 
 7. `portfolio` repositories are subject to the same platform invariants as `tenant` repositories.
+
+8. `index` repositories are pointer-only surfaces and must not introduce architectural or governance authority.
 
 Ambiguity is architectural debt.  
 Classification changes must be deliberate and reviewable.
