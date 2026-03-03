@@ -19,39 +19,54 @@ It does not replace per-repo documentation for service-specific implementation d
 
 ## Document Map
 
-- **ARCHITECTURAL_DOCTRINE_TIER0.md**  
+- **ARCHITECTURAL_DOCTRINE_TIER0.md**
   Foundational architectural principles and invariants.
 
-- **PLATFORM_OPERATING_MODEL.md**  
+- **REPO_TAXONOMY.md**
+  Canonical classification of all repositories in the ZaveStudios organization.
+
+- **OPERATING_MODEL.md**
   Repository roles, interaction patterns, authority boundaries, and change protocol.
 
-- **LIFECYCLE_MODEL.md**  
-  Change sequencing, promotion flow, and compatibility expectations.
+- **CONTROL_PLANE_MODEL.md**
+  Authority layers, control flow, and exception rules.
 
-- **CONTRACT_SCHEMA.md**  
+- **CONTRACT_SCHEMA.md**
   Platform interface definitions and required contract structure.
 
-- **CONTRACT_VALIDATION.md**  
+- **CONTRACT_VALIDATION.md**
   Validation mechanisms and enforcement rules.
 
-- **GENERATOR_MODEL.md**  
+- **LIFECYCLE_MODEL.md**
+  Change sequencing, promotion flow, and compatibility expectations.
+
+- **GENERATOR_MODEL.md**
   Generator semantics and template-driven behavior.
 
-- **REPO_TAXONOMY.yaml**  
-  Machine-readable inventory of repository roles and dependencies.
+- **DEVELOPER_EXPERIENCE.md**
+  Canonical developer experience standards for local development.
+
+- **OPERATING_MODEL_VALIDATION.md**
+  Executable validation checklist for the operating model.
+
+- **PR_WORKFLOW.md**
+  Standard pull request workflow and conventions.
 
 ## Precedence
 
 In case of conflict, documents are interpreted in the following order:
 
-1. ARCHITECTURAL_DOCTRINE_TIER0.md  
-2. PLATFORM_OPERATING_MODEL.md  
-3. LIFECYCLE_MODEL.md  
-4. CONTRACT_SCHEMA.md  
-5. CONTRACT_VALIDATION.md  
-6. GENERATOR_MODEL.md  
+1. ARCHITECTURAL_DOCTRINE_TIER0.md
+2. CONTROL_PLANE_MODEL.md
+3. OPERATING_MODEL.md
+4. LIFECYCLE_MODEL.md
+5. CONTRACT_SCHEMA.md
+6. CONTRACT_VALIDATION.md
+7. GENERATOR_MODEL.md
 
 Lower documents implement or specialize higher ones.
+
+Supporting documents (REPO_TAXONOMY.md, DEVELOPER_EXPERIENCE.md, OPERATING_MODEL_VALIDATION.md, PR_WORKFLOW.md) provide operational guidance and do not establish precedence in conflicts.
 
 ## Change Model
 

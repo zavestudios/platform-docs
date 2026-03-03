@@ -570,7 +570,7 @@ Developer experience standard succeeds when:
 
 ## Related Documentation
 
-- PLATFORM_OPERATING_MODEL.md — "Constrained path must always be faster"
+- OPERATING_MODEL.md — "Constrained path must always be faster"
 - ARCHITECTURAL_DOCTRINE_TIER0.md — Variance reduction principle
 - CONTRACT_SCHEMA.md — runtime profiles are contract-declared; local development remains containerized via docker-compose
 - GENERATOR_MODEL.md — Stage 1 should generate docker-compose

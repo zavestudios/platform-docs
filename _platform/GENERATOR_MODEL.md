@@ -19,7 +19,7 @@ Canonical contract reference:
 Generators must follow strict rules:
 
 - Deterministic: same contract → same output
-- TAXONOMY-deterministic: output TAXONOMY is a strict function of contract fields
+- Structure-deterministic: output structure is a strict function of contract fields
 - Stateless: generators do not rely on hidden context
 - Observable: all generated artifacts are inspectable
 - Replaceable: regenerated output must overwrite prior output safely
@@ -27,7 +27,7 @@ Generators must follow strict rules:
 
 Generators must never:
 
-- invent TAXONOMY not implied by the contract
+- invent structure not implied by the contract
 - infer missing intent
 - embed tenant-specific logic
 - mutate cluster state directly
@@ -133,7 +133,7 @@ Capabilities must be:
 - independently upgradeable
 - removable without breaking the workload
 
-Capabilities must never alter core workload TAXONOMY.
+Capabilities must never alter core workload structure.
 
 ---
 
