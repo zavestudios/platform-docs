@@ -85,10 +85,10 @@ The conventional filename is `zave.yaml`.
 
 Workload repositories should not define:
 
-- pipelines  
-- infrastructure TAXONOMY  
-- networking rules  
-- cluster overlays  
+- pipelines
+- infrastructure topology
+- networking rules
+- cluster overlays
 - security mechanics  
 
 All of those are platform responsibilities.
@@ -148,94 +148,9 @@ Portfolio workload migration hook:
 
 ---
 
-# Platform Control Plane Model
+# Platform Control Plane
 
-This defines where authority resides across the system.
-
----
-
-## Control Plane Layers
-
-### 1. Contract Plane — Intent Authority
-
-The workload contract defines:
-
-- runtime classification  
-- delivery strategy selection  
-- capability enablement  
-- persistence requirements  
-- exposure rules  
-
-Nothing outside the contract should influence workload TAXONOMY.
-
----
-
-### 2. CI Plane — Build Proposal Authority
-
-CI pipelines are responsible only for:
-
-- validating contract compliance  
-- building artifacts  
-- proposing environment changes  
-- emitting deployable versions  
-
-CI must not:
-
-- mutate cluster state directly  
-- define infrastructure TAXONOMY  
-- bypass GitOps  
-
-CI proposes. It does not enact.
-
----
-
-### 3. GitOps Plane — State Authority
-
-GitOps owns:
-
-- workload lifecycle registration  
-- environment promotion state  
-- service routing TAXONOMY  
-- capability activation  
-- cluster reconciliation  
-
-Git is the operational control plane.  
-All runtime state must be representable in Git.
-
-# Exception Authority Rules
-
-Explicit exceptions:
-
-- Bootstrap exception: `kubectl` is allowed only to install/repair Flux and apply the initial GitOps entrypoint.
-- Break-glass exception: `kubectl` is allowed only for emergency mitigation; all changes must be backported to Git immediately.
-
----
-
-### 4. Runtime Plane — Execution Authority
-
-The runtime environment executes:
-
-- reconciled Kubernetes resources  
-- platform capabilities  
-- tenant workloads  
-- observability collection  
-- policy enforcement  
-
-The runtime must never be a source of truth — only a reflection of Git state.
-
----
-
-## Authority Flow Summary
-
-```
-Tenant intent → Contract  
-Contract → CI proposal  
-CI → GitOps state update  
-GitOps → Cluster reconciliation  
-Cluster → Running system
-```
-
-No layer should bypass another.
+For details on authority layers and control flow, see **CONTROL_PLANE_MODEL.md**.
 
 Formation delivery semantics:
 

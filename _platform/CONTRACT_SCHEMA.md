@@ -2,8 +2,8 @@
 
 This document defines the **authoritative workload contract** for the ZaveStudios platform.
 
-The contract is the sole workload interface to the platform (tenant and portfolio).  
-Repositories, pipelines, infrastructure, and runtime TAXONOMY must be derived from this file.
+The contract is the sole workload interface to the platform (tenant and portfolio).
+Repositories, pipelines, infrastructure, and runtime configuration must be derived from this file.
 
 If something cannot be expressed in this schema, it is not part of the supported platform surface.
 
@@ -41,7 +41,7 @@ The schema is designed to enforce the following constraints:
 - Workloads declare **intent**, not implementation
 - Platform mechanics must be derivable automatically
 - Allowed variance must be bounded and enumerable
-- Runtime TAXONOMY must remain predictable
+- Runtime behavior must remain predictable
 - Governance must be enforceable statically
 
 The contract must therefore remain:
@@ -170,7 +170,7 @@ This determines:
 - ingress configuration
 - service mesh policy
 - DNS behavior
-- routing TAXONOMY
+- routing configuration
 
 No custom ingress configuration is allowed outside this field.
 
@@ -254,16 +254,16 @@ Capabilities are:
 
 Capability classes:
 
-- Feature capabilities (do not change TAXONOMY), e.g.:
+- Feature capabilities (do not change deployment shape), e.g.:
   - metrics
   - tracing
-- TAXONOMY capabilities (change deployable shape), e.g.:
+- Structural capabilities (change deployable shape), e.g.:
   - job-runner
   - cron
   - queue-consumer
 
-v0.1 allows only feature capabilities.  
-TAXONOMY capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
+v0.1 allows only feature capabilities.
+Structural capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
 
 ---
 
@@ -370,7 +370,7 @@ The contract intentionally does not allow:
 - custom image references
 - custom ingress objects
 - custom cluster resources
-- manual network TAXONOMY
+- manual network topology
 - arbitrary environment overlays
 
 These are platform responsibilities.
@@ -386,7 +386,7 @@ Every downstream system must derive from it:
 - repo scaffolding
 - pipeline generation
 - GitOps composition
-- runtime TAXONOMY
+- runtime configuration
 - governance enforcement
 
 If a behavior cannot be derived from the contract, it should not exist in the platform.
