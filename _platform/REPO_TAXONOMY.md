@@ -71,29 +71,50 @@ contract schema, lifecycle semantics, or implementation mechanics.
 
 ## Repository Classification Table
 
-| Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
-|------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
-| `platform-docs` | control-plane | No | No | Yes | No |
-| `platform-pipelines` | platform-service | No | No | Yes | No |
-| `image-factory` | platform-service | No | No | Yes | Yes |
-| `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
-| `ansible` | infrastructure | No | Yes | No | No |
-| `gitops` | infrastructure | No | Yes | No | Possibly |
-| `bigbang` | infrastructure | No | Yes | No | No |
-| `data-pipelines` | tenant | Yes | No | No | Yes |
-| `rigoberta` | tenant | Yes | No | No | Yes |
-| `panchito` | tenant | Yes | No | No | Yes |
-| `thehouseguy` | tenant | Yes | No | No | Yes |
-| `oracle` | tenant | Yes | No | No | Yes |
-| `mia` | tenant | Yes | No | No | Yes |
-| `xavierlopez.me` | portfolio | Yes | No | No | Yes |
-| `zavestudios` | portfolio | Yes | No | No | Yes |
-| `pg` | platform-service | No | No | Yes | Possibly |
-| `zavestudios-architecture` | index | No | No | No | No |
+| Repository | Category | terraform_class (overlay) | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
+|------------|----------|---------------------------|----------------|-------------------------------|------------------------------|---------------------------|
+| `platform-docs` | control-plane | N/A | No | No | Yes | No |
+| `platform-pipelines` | platform-service | N/A | No | No | Yes | No |
+| `image-factory` | platform-service | N/A | No | No | Yes | Yes |
+| `kubernetes-platform-infrastructure` | infrastructure | sandbox | No | Yes | No | No |
+| `ansible` | infrastructure | N/A | No | Yes | No | No |
+| `gitops` | infrastructure | N/A | No | Yes | No | Possibly |
+| `bigbang` | infrastructure | N/A (external mirror) | No | Yes | No | No |
+| `data-pipelines` | tenant | N/A | Yes | No | No | Yes |
+| `rigoberta` | tenant | N/A | Yes | No | No | Yes |
+| `panchito` | tenant | N/A | Yes | No | No | Yes |
+| `thehouseguy` | tenant | N/A | Yes | No | No | Yes |
+| `oracle` | tenant | N/A | Yes | No | No | Yes |
+| `mia` | tenant | N/A | Yes | No | No | Yes |
+| `xavierlopez.me` | portfolio | N/A | Yes | No | No | Yes |
+| `zavestudios` | portfolio | N/A | Yes | No | No | Yes |
+| `pg` | platform-service | N/A | No | No | Yes | Possibly |
+| `zavestudios-architecture` | index | N/A | No | No | No | No |
 
 ---
 
 ## Classification Notes
+
+### Terraform Overlay Classification
+
+Terraform is a secondary classification overlay, not a primary repository category.
+
+Primary category remains authoritative (`control-plane`, `infrastructure`, `platform-service`, `tenant`, `portfolio`, `index`).
+
+For `infrastructure` repositories that are Terraform-managed, use one of:
+
+- `modules` - reusable Terraform modules
+- `sandbox` - non-production or experimental stacks
+- `production` - production-affecting stacks
+
+Implementation note:
+
+- GitHub repositories are flat within an organization. `IAC/Terraform/*` is represented through naming, topics, teams, and rulesets, not nested repository folders, like Gitlab.
+
+Current assignments:
+
+- `kubernetes-platform-infrastructure` => `terraform_class: sandbox`
+- `bigbang` => tracked as `infrastructure` with no Terraform overlay class in this org; consumed as an external GitLab mirror from upstream
 
 ### Portfolio Repositories
 
