@@ -61,7 +61,7 @@ FluxCD manages:           ArgoCD manages:
 ├── Namespaces            ├── Deployments
 ├── NetworkPolicies       ├── Services
 ├── ResourceQuotas        ├── Ingresses
-├── PodSecurityPolicies   ├── ConfigMaps (tenant)
+├── Kyverno policies      ├── ConfigMaps (tenant)
 ├── Big Bang              ├── Secrets (tenant, sealed)
 └── ArgoCD itself         └── HorizontalPodAutoscalers
 ```
