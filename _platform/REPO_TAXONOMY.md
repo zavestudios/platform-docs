@@ -117,12 +117,12 @@ contract schema, lifecycle semantics, or implementation mechanics.
 - Classified as `portfolio` (external-facing workload)
 - Must follow the same contract, validation, and lifecycle model as tenant workloads
 
-### Future Tenants
+### Tenant Status Notes
 
 **`mia`**
-- OpenClaw AI assistant workload (not yet created)
-- Will be hosted in Kubernetes as platform-governed tenant
-- Reserved in taxonomy for future deployment
+- OpenClaw AI assistant workload (active tenant repository)
+- Deploys as a platform-governed tenant via shared workflows and GitOps
+- First runtime verification may be tracked separately from repository onboarding status
 
 ### Portfolio Contract Governance
 
