@@ -159,10 +159,10 @@ VCS choice is orthogonal—POCs may live in GitLab or GitHub.
 - Portfolio repositories must declare `zave.yaml` and pass the same validation/lifecycle gates as tenant repositories.
 - Portfolio repositories may differ in runtime profile (for example `spec.runtime: static`) but not governance level.
 
-**Current Migration Gap:**
-- `xavierlopez.me` and `zavestudios` currently lack `zave.yaml`.
-- This is a temporary conformance gap in Formation, not a permanent exception.
-- Gap closure should be tracked explicitly until both repositories are contract-backed.
+**Current Migration Status:**
+- `xavierlopez.me` and `zavestudios` are now contract-backed and include `zave.yaml`.
+- Portfolio repositories remain subject to the same validation and lifecycle gates as tenant repositories.
+- Any future portfolio repository without a canonical workload contract should be treated as a conformance gap, not a permanent exception.
 
 **Runtime Profile for Portfolio Workloads:**
 - Contract schema supports `spec.runtime: static` for static site workloads.

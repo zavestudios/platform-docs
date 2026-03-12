@@ -39,7 +39,7 @@ This is non-negotiable for workload repositories classified as `tenant` or `port
 
 Every contract-governed workload repository must include:
 
-#### 1. `docker-compose.yml`
+#### 1. `docker-compose.yml` or `docker-compose.yaml`
 
 **Location:** Repository root
 
@@ -52,6 +52,8 @@ Every contract-governed workload repository must include:
 - Exposes services on localhost for development access
 - Uses named volumes for data persistence
 - Defines health checks where applicable
+
+Either filename is acceptable. Repositories should choose one and avoid keeping both.
 
 **Example:**
 
@@ -363,7 +365,7 @@ spec:
     engine: postgres
 ```
 
-**Generated `docker-compose.yml`:**
+**Generated `docker-compose.yml` or `docker-compose.yaml`:**
 
 ```yaml
 services:
@@ -410,7 +412,7 @@ Until the Stage 1 generator exists, developers must manually create docker-compo
 **Minimum Workload Scaffold requirement** (see Issue #1):
 
 Every new contract-governed workload repository must include:
-- `docker-compose.yml`
+- `docker-compose.yml` or `docker-compose.yaml`
 - `.env.example`
 - README "Local Development" section
 
@@ -548,7 +550,7 @@ During Formation, compliance is verified through:
 
 When contract validation is automated (see CONTRACT_VALIDATION.md), checks should include:
 
-- `docker-compose.yml` exists in repository root
+- `docker-compose.yml` or `docker-compose.yaml` exists in repository root
 - `.env.example` exists
 - README contains "Local Development" section
 - docker-compose defines service matching `metadata.name`
