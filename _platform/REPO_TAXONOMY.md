@@ -69,6 +69,19 @@ contract schema, lifecycle semantics, or implementation mechanics.
 
 ---
 
+### `poc`
+Proof-of-concept implementations, technical proposals, and exploratory work.
+
+These are explicitly NOT governed by platform contracts, lifecycle rules, or GitOps.
+They exist for demonstration, learning, evaluation, or portfolio purposes.
+
+They may graduate to other categories (tenant, platform-service) if proven viable,
+or be archived/deleted when their purpose is fulfilled.
+
+VCS choice (GitHub/GitLab) is orthogonal to category—POCs may live in any approved VCS.
+
+---
+
 ## Repository Classification Table
 
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
@@ -90,6 +103,10 @@ contract schema, lifecycle semantics, or implementation mechanics.
 | `zavestudios` | portfolio | Yes | No | No | Yes |
 | `pg` | platform-service | No | No | Yes | Possibly |
 | `zavestudios-architecture` | index | No | No | No | No |
+| `cyberark-migration` | poc | Possibly | No | No | Possibly |
+| `k8s-mcp` | poc | Possibly | No | No | Possibly |
+| `k8s-runtime-security` | poc | Possibly | No | No | Possibly |
+| `cloudflare-ai-gateway` | poc | Possibly | No | No | Possibly |
 
 ---
 
@@ -116,6 +133,17 @@ contract schema, lifecycle semantics, or implementation mechanics.
 - Uses platform-pipelines shared workflows for CI/CD
 - Classified as `portfolio` (external-facing workload)
 - Must follow the same contract, validation, and lifecycle model as tenant workloads
+
+### POC Repositories
+
+POC repositories are exploratory and NOT governed by platform contracts or lifecycle rules.
+
+See:
+- **POC_GOVERNANCE.md** for governance model
+- **POC_LIFECYCLE.md** for lifecycle states
+- **POC_GRADUATION.md** for graduation process
+
+VCS choice is orthogonal—POCs may live in GitLab or GitHub.
 
 ### Tenant Status Notes
 
@@ -181,5 +209,7 @@ contract schema, lifecycle semantics, or implementation mechanics.
 
 8. `index` repositories are pointer-only surfaces and must not introduce architectural or governance authority.
 
-Ambiguity is architectural debt.  
+9. `poc` repositories are explicitly NOT subject to platform contracts, lifecycle rules, or GitOps governance. They follow POC-specific governance defined in `POC_GOVERNANCE.md`.
+
+Ambiguity is architectural debt.
 Classification changes must be deliberate and reviewable.
