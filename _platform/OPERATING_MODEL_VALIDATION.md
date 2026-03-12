@@ -53,6 +53,7 @@ Use this for routine checks, release gates, and tenant onboarding.
 ☐ Identify impacted repositories using documentation only  
 ☐ Verify version pinning rules are explicit  
 ☐ Confirm non-upgraded tenants fail predictably  
+☐ Confirm shared repositories do not require operator-specific usernames, IPs, or SSH config as the canonical path  
 ☐ Confirm no silent behavior changes occur  
 
 ---
@@ -112,6 +113,7 @@ Failure Condition: Any repository mixes authority layers.
 ☐ Document each step taken  
 ☐ Confirm steps map directly to documented artifacts  
 ☐ Confirm no environment-specific knowledge required  
+☐ Confirm environment-specific access paths are modeled as declared inputs or local overrides rather than committed operator-specific defaults  
 
 Failure Condition: Hidden or tribal knowledge required.
 
