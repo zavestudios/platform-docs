@@ -88,7 +88,30 @@ Decision model for this principle:
 
 ---
 
-## 7. Measurable Leverage
+## 7. Portability Principle
+
+Platform repositories must remain portable across valid environments through
+declared interfaces, generated artifacts, and environment-specific overrides.
+
+Portability does not mean identical topology everywhere.
+It means the same repository can operate in another approved environment
+without redesign or operator-specific hardcoding.
+
+Therefore ZaveStudios must not rely on:
+
+- Personal usernames as shared infrastructure defaults.
+- Operator-specific hostnames, LAN IPs, or SSH jump paths committed as the canonical path.
+- Environment-specific exceptions hidden in undocumented local shell or SSH state.
+
+Environment-specific access mechanics are allowed only when they are:
+
+- Explicitly modeled as configuration inputs or local overrides.
+- Replaceable without changing repository structure or playbook/workload logic.
+- Consistent with platform security controls and host identity verification.
+
+---
+
+## 8. Measurable Leverage
 
 ZaveStudios creates leverage by:
 
