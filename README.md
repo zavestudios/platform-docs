@@ -4,6 +4,8 @@ This repository is the authoritative source of truth for the ZaveStudios platfor
 
 It defines how the platform is structured, how repositories interact, and how change is introduced safely across the system. It does not contain application code or environment-specific secrets.
 
+For local multi-repository analysis in this workspace, the current working set is defined by `/Users/xavierlopez/Dev/zavestudios.code-workspace`. That file is an operational workspace definition, not a governance authority.
+
 ## Scope
 
 This repository governs:
@@ -65,6 +67,8 @@ In case of conflict, documents are interpreted in the following order:
 7. GENERATOR_MODEL.md
 
 Lower documents implement or specialize higher ones.
+
+This precedence list is intentionally a conflict-resolution subset, not a complete inventory of `_platform/`. See the Document Map above for the broader file set.
 
 Supporting documents (REPO_TAXONOMY.md, DEVELOPER_EXPERIENCE.md, OPERATING_MODEL_VALIDATION.md, PR_WORKFLOW.md) provide operational guidance and do not establish precedence in conflicts.
 

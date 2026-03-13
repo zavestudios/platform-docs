@@ -106,7 +106,7 @@ Until `zave init` command exists, manually create repository:
    ├── Dockerfile
    ├── .github/workflows/
    │   └── build.yaml  (calls platform-pipelines)
-   └── docker-compose.yml  (local dev - see DEVELOPER_EXPERIENCE.md)
+   └── docker-compose.yml or docker-compose.yaml  (local dev - see DEVELOPER_EXPERIENCE.md)
    ```
 
 4. Bind platform workflows (reference `platform-pipelines` shared workflows)
