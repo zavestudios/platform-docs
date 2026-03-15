@@ -39,8 +39,10 @@ These may include:
 - CI/CD workflows
 - Supply-chain primitives (image factories)
 - Shared workload-level capabilities (e.g., DB provisioning modules)
+- Shared runtime services used by multiple tenants or platform-managed workloads
 
 They do not represent standalone business workloads.
+They may deploy shared runtime components when those components implement reusable platform capability rather than tenant-specific product behavior.
 
 ---
 
@@ -101,7 +103,7 @@ VCS choice (GitHub/GitLab) is orthogonal to category—POCs may live in any appr
 | `mia` | tenant | Yes | No | No | Yes |
 | `xavierlopez.me` | portfolio | Yes | No | No | Yes |
 | `zavestudios` | portfolio | Yes | No | No | Yes |
-| `pg` | platform-service | No | No | Yes | Possibly |
+| `pg` | platform-service | Possibly | No | Yes | Possibly |
 | `zavestudios-architecture` | index | No | No | No | No |
 | `cyberark-migration` | poc | Possibly | No | No | Possibly |
 | `k8s-mcp` | poc | Possibly | No | No | Possibly |
@@ -144,6 +146,23 @@ See:
 - **POC_GRADUATION.md** for graduation process
 
 VCS choice is orthogonal—POCs may live in GitLab or GitHub.
+
+### Shared Runtime Platform Services
+
+Platform services may be either:
+
+- non-runtime reusable capabilities, such as pipelines or build primitives
+- shared runtime services, such as gateways, provisioners, or other platform-managed APIs used by multiple tenants
+
+Classification rule:
+
+- If the repository provides reusable capability and the running service is shared across workloads, classify it as `platform-service`, not `tenant`.
+- If the repository represents tenant-specific or external-facing product behavior, classify it as `tenant` or `portfolio` as appropriate.
+
+Governance implication:
+
+- Shared runtime platform services are still governed through platform-owned GitOps and control-plane rules.
+- They are not tenant workloads and should not be modeled as independent business services.
 
 ### Tenant Status Notes
 
@@ -201,9 +220,9 @@ VCS choice is orthogonal—POCs may live in GitLab or GitHub.
 
 4. Only `infrastructure` repositories may mutate shared infrastructure state.
 
-5. Only `tenant` and `portfolio` repositories may deploy runtime workloads.
+5. `tenant` and `portfolio` repositories may deploy workload runtimes. `platform-service` repositories may deploy shared runtime capabilities.
 
-6. `platform-service` repositories provide reusable capabilities and must not define independent business workloads.
+6. `platform-service` repositories provide reusable capabilities and must not define independent business workloads, even when implemented as running services.
 
 7. `portfolio` repositories are subject to the same platform invariants as `tenant` repositories.
 
