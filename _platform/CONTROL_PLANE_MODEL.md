@@ -18,6 +18,12 @@ The workload contract defines:
 
 Nothing outside the contract should influence workload structure.
 
+Scope note:
+
+- The workload contract is the intent surface for `tenant` and `portfolio` workloads.
+- Shared `platform-service` runtimes are platform-owned capabilities, not tenant workloads.
+- Those services must still be represented in GitOps, but they are not required to use the tenant workload contract as their authoring interface.
+
 ---
 
 ### 2. CI Plane — Build Proposal Authority
@@ -48,6 +54,8 @@ GitOps owns:
 - service routing configuration
 - capability activation
 - cluster reconciliation
+
+For shared runtime platform services, GitOps remains the authoritative lifecycle surface even when the service is not authored as a tenant workload contract.
 
 Git is the operational control plane.
 All runtime state must be representable in Git.
