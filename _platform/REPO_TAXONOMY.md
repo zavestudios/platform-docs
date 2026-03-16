@@ -100,7 +100,6 @@ This table is the canonical in-scope repository set for governed platform analys
 | `pg` | platform-service | No | No | Yes | Possibly |
 | `platform-pipelines` | platform-service | No | No | Yes | No |
 | `ansible` | infrastructure | No | Yes | No | No |
-| `bigbang` | infrastructure | No | Yes | No | No |
 | `gitops` | infrastructure | No | Yes | No | Possibly |
 | `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
 | `data-pipelines` | tenant | Yes | No | No | Yes |

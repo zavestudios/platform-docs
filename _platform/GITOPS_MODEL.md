@@ -22,7 +22,7 @@ ZaveStudios uses **two GitOps tools** with distinct responsibilities:
 
 **Scope:**
 - Platform resources (`platform/`)
-- Big Bang installation (`bigbang/`)
+- Platform component installation and cluster add-ons
 - Cluster-level configuration
 - Namespaces, policies, networking
 - Infrastructure components
