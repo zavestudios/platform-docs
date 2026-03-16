@@ -103,7 +103,8 @@ VCS choice (GitHub/GitLab) is orthogonal to category—POCs may live in any appr
 | `mia` | tenant | Yes | No | No | Yes |
 | `xavierlopez.me` | portfolio | Yes | No | No | Yes |
 | `zavestudios` | portfolio | Yes | No | No | Yes |
-| `pg` | platform-service | Possibly | No | Yes | Possibly |
+| `pg` | platform-service | No | No | Yes | Possibly |
+| `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
 | `zavestudios-architecture` | index | No | No | No | No |
 | `cyberark-migration` | poc | Possibly | No | No | Possibly |
 | `k8s-mcp` | poc | Possibly | No | No | Possibly |
