@@ -31,6 +31,7 @@ Use this for routine checks, release gates, and tenant onboarding.
 ## 2. Boundary Enforcement
 
 ☐ Confirm each repository has a single layer classification  
+☐ Confirm governed audit scope is limited to repositories listed in `REPO_TAXONOMY.md`  
 ☐ Confirm tenant repos do not define governance rules  
 ☐ Confirm shared repos do not define lifecycle policy  
 ☐ Confirm gitops does not define governance semantics  
@@ -97,6 +98,8 @@ Failure Condition: Any normative governance exists outside `platform-docs`.
 ## B. Layer Purity Audit
 
 For each repository:
+
+Scope rule: only repositories listed in `REPO_TAXONOMY.md` are in scope for governed platform validation. Local workspace directories absent from that table are out of scope unless separately declared authoritative.
 
 ☐ Assign explicit layer (Governance / Control Plane / Desired State / Tenant / Interpretation)  
 ☐ Verify no cross-layer artifact leakage  

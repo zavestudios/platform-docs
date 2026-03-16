@@ -13,6 +13,10 @@ It exists to eliminate ambiguity for:
 
 Every repository must belong to exactly one **category**.
 
+Only repositories listed in the **Repository Classification Table** are in scope for governed ZaveStudios platform audits, conformance checks, and taxonomy-based enforcement.
+
+Repositories present in a local workspace but absent from this table are out of scope unless explicitly added by pull request.
+
 ---
 
 ## Repository Categories
@@ -85,6 +89,8 @@ VCS choice (GitHub/GitLab) is orthogonal to category—POCs may live in any appr
 ---
 
 ## Repository Classification Table
+
+This table is the canonical in-scope repository set for governed platform analysis and enforcement.
 
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
