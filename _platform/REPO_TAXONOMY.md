@@ -89,27 +89,27 @@ VCS choice (GitHub/GitLab) is orthogonal to category—POCs may live in any appr
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
 | `platform-docs` | control-plane | No | No | Yes | No |
-| `platform-pipelines` | platform-service | No | No | Yes | No |
 | `image-factory` | platform-service | No | No | Yes | Yes |
-| `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
+| `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
+| `pg` | platform-service | No | No | Yes | Possibly |
+| `platform-pipelines` | platform-service | No | No | Yes | No |
 | `ansible` | infrastructure | No | Yes | No | No |
-| `gitops` | infrastructure | No | Yes | No | Possibly |
 | `bigbang` | infrastructure | No | Yes | No | No |
+| `gitops` | infrastructure | No | Yes | No | Possibly |
+| `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
 | `data-pipelines` | tenant | Yes | No | No | Yes |
-| `rigoberta` | tenant | Yes | No | No | Yes |
-| `panchito` | tenant | Yes | No | No | Yes |
-| `thehouseguy` | tenant | Yes | No | No | Yes |
-| `oracle` | tenant | Yes | No | No | Yes |
 | `mia` | tenant | Yes | No | No | Yes |
+| `oracle` | tenant | Yes | No | No | Yes |
+| `panchito` | tenant | Yes | No | No | Yes |
+| `rigoberta` | tenant | Yes | No | No | Yes |
+| `thehouseguy` | tenant | Yes | No | No | Yes |
 | `xavierlopez.me` | portfolio | Yes | No | No | Yes |
 | `zavestudios` | portfolio | Yes | No | No | Yes |
-| `pg` | platform-service | No | No | Yes | Possibly |
-| `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
 | `zavestudios-architecture` | index | No | No | No | No |
+| `cloudflare-ai-gateway` | poc | Possibly | No | No | Possibly |
 | `cyberark-migration` | poc | Possibly | No | No | Possibly |
 | `k8s-mcp` | poc | Possibly | No | No | Possibly |
 | `k8s-runtime-security` | poc | Possibly | No | No | Possibly |
-| `cloudflare-ai-gateway` | poc | Possibly | No | No | Possibly |
 
 ---
 
