@@ -53,6 +53,7 @@ Use this for routine checks, release gates, and tenant onboarding.
 ☐ Introduce a controlled breaking change in a shared workflow  
 ☐ Identify impacted repositories using documentation only  
 ☐ Verify version pinning rules are explicit  
+☐ Treat any governed repository using floating shared workflow refs as Formation-phase conformance debt until SHA-pinning enforcement is active  
 ☐ Confirm non-upgraded tenants fail predictably  
 ☐ Confirm shared repositories do not require operator-specific usernames, IPs, or SSH config as the canonical path  
 ☐ Confirm no silent behavior changes occur  
