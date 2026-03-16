@@ -6,6 +6,8 @@ title: "OPERATING_MODEL_VALIDATION"
 
 This document defines the executable validation checklist for the ZaveStudios operating model.
 
+For the canonical audit catalog, trigger matrix, evidence requirements, and review cadence, see `AUDIT_PROGRAM.md`.
+
 It must be run according to the Execution Policy defined below.
 
 Validation proceeds in defined order. Governance clarity precedes runtime validation.
