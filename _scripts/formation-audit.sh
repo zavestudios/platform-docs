@@ -14,6 +14,9 @@ set -euo pipefail
 
 WORKSPACE_ROOT="${WORKSPACE_ROOT:-/Users/xavierlopez/Dev}"
 VERBOSE="${1:-}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+TAXONOMY_PATH="$REPO_ROOT/_platform/REPO_TAXONOMY.md"
 
 # Color output
 GREEN='\033[0;32m'
@@ -33,27 +36,44 @@ workloads_with_readme_local_dev=0
 pocs_with_readme=0
 pocs_with_system_design_template=0
 pocs_with_metadata=0
+missing_repo_count=0
 
-# Repository arrays (from REPO_TAXONOMY.md)
-TENANT_REPOS=(
-    "data-pipelines"
-    "mia"
-    "oracle"
-    "panchito"
-    "rigoberta"
-    "thehouseguy"
-)
+# Repository arrays (derived from REPO_TAXONOMY.md)
+TENANT_REPOS=()
+PORTFOLIO_REPOS=()
+POC_REPOS=()
 
-PORTFOLIO_REPOS=(
-    "xavierlopez.me"
-    "zavestudios"
-)
+if [[ ! -f "$TAXONOMY_PATH" ]]; then
+    echo -e "${RED}ERROR:${NC} taxonomy file not found at $TAXONOMY_PATH"
+    exit 1
+fi
 
-POC_REPOS=(
-    "cloudflare-ai-gateway"
-    "cyberark-migration"
-    "k8s-mcp"
-    "k8s-runtime-security"
+while IFS='|' read -r repo category; do
+    case "$category" in
+        tenant)
+            TENANT_REPOS+=("$repo")
+            ;;
+        portfolio)
+            PORTFOLIO_REPOS+=("$repo")
+            ;;
+        poc)
+            POC_REPOS+=("$repo")
+            ;;
+    esac
+done < <(
+    awk -F'|' '
+        /^\| `/ {
+            repo = $2
+            category = $3
+            gsub(/^[[:space:]]+|[[:space:]]+$/, "", repo)
+            gsub(/^[[:space:]]+|[[:space:]]+$/, "", category)
+            gsub(/`/, "", repo)
+            gsub(/`/, "", category)
+            if (category == "tenant" || category == "portfolio" || category == "poc") {
+                print repo "|" category
+            }
+        }
+    ' "$TAXONOMY_PATH"
 )
 
 # Combine tenant and portfolio for workload checks
@@ -64,6 +84,7 @@ echo -e "${BLUE}║   ZaveStudios Formation Phase Audit               ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════════╝${NC}"
 echo ""
 echo "Workspace: $WORKSPACE_ROOT"
+echo "Taxonomy:  $TAXONOMY_PATH"
 echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
 echo ""
 
@@ -78,13 +99,13 @@ echo ""
 
 for repo in "${WORKLOAD_REPOS[@]}"; do
     repo_path="$WORKSPACE_ROOT/$repo"
+    total_tenant_portfolio=$((total_tenant_portfolio + 1))
 
     if [[ ! -d "$repo_path" ]]; then
-        echo -e "${YELLOW}[SKIP]${NC} $repo - repository not found locally"
+        missing_repo_count=$((missing_repo_count + 1))
+        echo -e "${RED}[MISSING]${NC} $repo - repository not found locally"
         continue
     fi
-
-    total_tenant_portfolio=$((total_tenant_portfolio + 1))
 
     # Check for zave.yaml
     has_contract=false
@@ -151,6 +172,9 @@ for repo in "${WORKLOAD_REPOS[@]}"; do
     repo_path="$WORKSPACE_ROOT/$repo"
 
     if [[ ! -d "$repo_path" ]]; then
+        if [[ "$VERBOSE" == "--verbose" ]]; then
+            echo "$repo: repository-missing"
+        fi
         continue
     fi
 
@@ -222,15 +246,15 @@ echo ""
 
 for repo in "${POC_REPOS[@]}"; do
     repo_path="$WORKSPACE_ROOT/$repo"
+    total_poc=$((total_poc + 1))
 
     if [[ ! -d "$repo_path" ]]; then
+        missing_repo_count=$((missing_repo_count + 1))
         if [[ "$VERBOSE" == "--verbose" ]]; then
-            echo -e "${YELLOW}[SKIP]${NC} $repo - repository not found locally"
+            echo -e "${RED}[MISSING]${NC} $repo - repository not found locally"
         fi
         continue
     fi
-
-    total_poc=$((total_poc + 1))
 
     # Check for README
     has_readme=false
@@ -332,6 +356,12 @@ echo -e "${YELLOW}[?]${NC} Generator Readiness: \`zave init\` command exists (re
 echo -e "${YELLOW}[?]${NC} Tenant Self-Service: <2 support tickets per month (requires manual verification)"
 
 echo ""
+if [[ $missing_repo_count -gt 0 ]]; then
+    echo -e "${RED}Workspace incomplete:${NC} $missing_repo_count in-scope repositories from REPO_TAXONOMY.md are missing locally."
+    echo "Metrics above count missing repositories in the denominator and should not be treated as full coverage."
+    echo ""
+fi
+
 echo "Automated Criteria Met: $exit_criteria_met/2 (automated checks only)"
 echo "Manual Verification Required: 3 criteria (GitOps, Generator, Support Tickets)"
 echo ""
@@ -349,3 +379,7 @@ echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 echo "Audit complete. See MEASUREMENT_MODEL.md for metric definitions."
 echo "For verbose output, run: $0 --verbose"
+
+if [[ $missing_repo_count -gt 0 ]]; then
+    exit 2
+fi

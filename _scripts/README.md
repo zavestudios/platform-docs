@@ -6,7 +6,7 @@ This directory contains automation scripts for platform operations and measureme
 
 ## formation-audit.sh
 
-**Purpose**: Audit Formation phase metrics by scanning repositories listed in REPO_TAXONOMY.md
+**Purpose**: Audit Formation phase metrics by deriving in-scope repositories from `_platform/REPO_TAXONOMY.md`
 
 **What it checks**:
 
@@ -60,7 +60,8 @@ cd /Users/xavierlopez/Dev
 ## Requirements
 
 - Run from workspace root (`/Users/xavierlopez/Dev`)
-- All repositories listed in REPO_TAXONOMY.md must be cloned locally
+- `_platform/REPO_TAXONOMY.md` must be present in this repository
+- All in-scope tenant, portfolio, and POC repositories listed in `REPO_TAXONOMY.md` should be cloned locally
 - Script reads file presence, does not require running services
 
 ---
@@ -68,7 +69,8 @@ cd /Users/xavierlopez/Dev
 ## Exit Codes
 
 - `0`: Script completed successfully (does not indicate all criteria met)
-- Non-zero: Script error (missing dependencies, filesystem issues, etc.)
+- `2`: One or more in-scope repositories from `REPO_TAXONOMY.md` are missing locally; metrics still count them in the denominator
+- Other non-zero: Script error (missing taxonomy file, filesystem issues, etc.)
 
 ---
 
@@ -96,6 +98,8 @@ Timestamp: 2026-03-16 20:30:00 UTC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Contract Adoption Metrics
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Taxonomy:  /Users/xavierlopez/Dev/platform-docs/_platform/REPO_TAXONOMY.md
 
 Contract Adoption: 8/8 (100%)
 Valid Contracts:   8/8 (100%)
@@ -162,6 +166,8 @@ Potential improvements for post-Formation:
 ### "repository not found locally"
 
 **Cause**: Repository listed in REPO_TAXONOMY.md is not cloned in workspace
+
+**Effect**: Script exits with code `2`, and missing repositories count against coverage percentages
 
 **Fix**: Clone missing repository or remove from REPO_TAXONOMY.md if decommissioned
 
