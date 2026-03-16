@@ -26,6 +26,7 @@ Canonical authorities:
 | Only supported contract versions are accepted | Tenant/portfolio pull request | CI compatibility check against supported `apiVersion` window | Unsupported or deprecated version outside allowed window | `platform-pipelines` | Hard fail |
 | Contract semantics must map to supported platform behavior | Tenant/portfolio pull request | Semantic validation stage (runtime/exposure/delivery/capability compatibility) | Unsupported combinations or invalid capability bindings | `platform-pipelines` | Hard fail |
 | Tenant/portfolio repositories must use platform-owned workflows | Tenant/portfolio pull request | File-surface and workflow policy checks | Custom workflow definitions or unauthorized workflow call targets | `platform-pipelines` | Hard fail |
+| Governed repositories must pin shared workflow refs to immutable commit SHAs | Tenant/portfolio and shared-service pull request | Workflow-ref policy check | Shared workflow ref uses a floating branch or tag instead of a commit SHA | `platform-pipelines` | Deferred in Formation; target hard fail |
 | Repository behavior must match declared taxonomy category | Any repository pull request | Taxonomy conformance checks against class invariants | Category/rule mismatch (for example infra mutation in non-infra repo) | `platform-docs` | Hard fail |
 | `index` repositories are pointer-only and non-authoritative | Index repository pull request | Content policy check for forbidden authority patterns | Governance doctrine, contract schema, lifecycle rules, or platform mechanics defined in index repo | `platform-docs` | Hard fail |
 | Shared infrastructure mutation is constrained to infrastructure layer | Infrastructure/control pull requests | Policy checks + CODEOWNERS + protected branch required checks | Shared infrastructure mutation introduced from non-infrastructure repository | `platform-docs` + org policy | Hard fail |
@@ -49,9 +50,23 @@ Canonical authorities:
 
 1. Contract structure and semantic validation gates
 2. Workflow ownership and file-surface gates
-3. Taxonomy/category conformance gates (including `index`)
-4. Contract evolution and migration gates
-5. Runtime drift detection and reconciliation evidence export
+3. Shared workflow ref pinning gates
+4. Taxonomy/category conformance gates (including `index`)
+5. Contract evolution and migration gates
+6. Runtime drift detection and reconciliation evidence export
+
+## Formation Exception — Shared Workflow Ref Pinning
+
+Target state:
+
+- Governed repositories pin `platform-pipelines` workflow references to immutable commit SHAs.
+- Floating refs such as `@main` are not allowed for governed repositories once enforcement is active.
+
+Current Formation status:
+
+- Some governed repositories still reference shared workflows via floating refs.
+- This is treated as explicit conformance debt during Formation, not as an accepted steady-state policy.
+- Until enforcement is enabled, workflow changes may propagate immediately to some consumers while SHA-pinned consumers remain stable.
 
 ---
 
