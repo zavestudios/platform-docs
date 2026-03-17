@@ -99,6 +99,7 @@ This table is the canonical in-scope repository set for governed platform analys
 | `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
 | `pg` | platform-service | No | No | Yes | Possibly |
 | `platform-pipelines` | platform-service | No | No | Yes | No |
+| `zave-cli` | platform-service | No | No | Yes | No |
 | `ansible` | infrastructure | No | Yes | No | No |
 | `gitops` | infrastructure | No | Yes | No | Possibly |
 | `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
@@ -119,6 +120,15 @@ This table is the canonical in-scope repository set for governed platform analys
 ---
 
 ## Classification Notes
+
+### Platform Service Repositories
+
+**`zave-cli`**
+- Workload generator CLI tool
+- Generates platform-compliant repository scaffolds from contracts
+- Implements Repository Generator (Stage 1) from GENERATOR_MODEL.md
+- Unblocks Formation exit criterion: "zave init exists"
+- Classified as `platform-service` (provides reusable capability for workload creation)
 
 ### Portfolio Repositories
 

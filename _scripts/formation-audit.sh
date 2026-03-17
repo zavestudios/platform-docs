@@ -7,12 +7,12 @@
 # Usage: ./formation-audit.sh [--verbose]
 #
 # Requirements:
-# - Run from workspace root (/Users/xavierlopez/Dev)
+# - Run from workspace root (default: ~/Dev, override with WORKSPACE_ROOT env var)
 # - All repositories must be cloned locally
 
 set -euo pipefail
 
-WORKSPACE_ROOT="${WORKSPACE_ROOT:-/Users/xavierlopez/Dev}"
+WORKSPACE_ROOT="${WORKSPACE_ROOT:-$HOME/Dev}"
 VERBOSE="${1:-}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
