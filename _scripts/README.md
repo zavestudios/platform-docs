@@ -38,7 +38,7 @@ This directory contains automation scripts for platform operations and measureme
 ### Basic Run
 
 ```bash
-cd /Users/xavierlopez/Dev
+cd ~/Dev  # or your workspace root
 ./platform-docs/_scripts/formation-audit.sh
 ```
 
@@ -49,7 +49,7 @@ cd /Users/xavierlopez/Dev
 ### Verbose Run
 
 ```bash
-cd /Users/xavierlopez/Dev
+cd ~/Dev  # or your workspace root
 ./platform-docs/_scripts/formation-audit.sh --verbose
 ```
 
@@ -59,7 +59,7 @@ cd /Users/xavierlopez/Dev
 
 ## Requirements
 
-- Run from workspace root (`/Users/xavierlopez/Dev`)
+- Run from workspace root (default: `~/Dev`, override with `WORKSPACE_ROOT` env var)
 - `_platform/REPO_TAXONOMY.md` must be present in this repository
 - All in-scope tenant, portfolio, and POC repositories listed in `REPO_TAXONOMY.md` should be cloned locally
 - Script reads file presence, does not require running services
@@ -92,14 +92,14 @@ cd /Users/xavierlopez/Dev
 ║   ZaveStudios Formation Phase Audit               ║
 ╚════════════════════════════════════════════════════╝
 
-Workspace: /Users/xavierlopez/Dev
+Workspace: /home/user/Dev
 Timestamp: 2026-03-16 20:30:00 UTC
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Contract Adoption Metrics
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Taxonomy:  /Users/xavierlopez/Dev/platform-docs/_platform/REPO_TAXONOMY.md
+Taxonomy:  /home/user/Dev/platform-docs/_platform/REPO_TAXONOMY.md
 
 Contract Adoption: 8/8 (100%)
 Valid Contracts:   8/8 (100%)
@@ -187,7 +187,7 @@ Potential improvements for post-Formation:
 
 **Fix**:
 ```bash
-chmod +x /Users/xavierlopez/Dev/platform-docs/_scripts/formation-audit.sh
+chmod +x ~/Dev/platform-docs/_scripts/formation-audit.sh
 ```
 
 ---
@@ -204,7 +204,7 @@ chmod +x /Users/xavierlopez/Dev/platform-docs/_scripts/formation-audit.sh
 
 ## Maintenance
 
-**Who maintains**: Platform team (currently: Xavier as DX PM)
+**Who maintains**: Platform team (DX PM role)
 
 **Update triggers**:
 - REPO_TAXONOMY.md changes (add/remove repositories)

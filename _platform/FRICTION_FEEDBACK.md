@@ -465,7 +465,7 @@ This is the operational implementation of DORA's finding:
 4. Watch for DX PM triage response (target: <1 week)
 5. Track resolution in changelog
 
-**For DX PM (Xavier, for now)**:
+**For DX PM**:
 
 1. Weekly: Review new friction point submissions, triage and label
 2. Monthly: Review trends with platform team, update roadmap
