@@ -32,7 +32,7 @@ Canonical authorities:
 | Shared infrastructure mutation is constrained to infrastructure layer | Infrastructure/control pull requests | Policy checks + CODEOWNERS + protected branch required checks | Shared infrastructure mutation introduced from non-infrastructure repository | `platform-docs` + org policy | Hard fail |
 | Contract changes require compatibility and migration path | `platform-docs` pull request | Documentation gate for compatibility window and migration notes | Contract-breaking change without versioned migration and compatibility updates | `platform-docs` | Hard fail |
 | GitOps remains lifecycle authority for deployment state | Runtime reconciliation boundary | Reconciliation policy and drift detection controls | Out-of-band runtime mutation or unmanaged drift | `gitops` | Alert + gated remediation |
-| kubectl instructions remain human-gated in docs | Documentation pull request | Markdown lint/policy check for manual-step labeling | kubectl instruction missing required `Run manually by human` label | `platform-docs` | Hard fail |
+| kubectl instructions remain human-gated in docs | Documentation pull request | Markdown lint/policy check for manual-step labeling | kubectl instruction missing required `Requires cluster access:` label | `platform-docs` | Hard fail |
 
 ---
 

@@ -194,15 +194,15 @@ Once generators stabilize:
 
 ## FluxCD Bootstrap
 
-FluxCD is installed via `gitops/bootstrap/` and pointed at `clusters/sandbox/`.
+FluxCD is installed via `gitops/bootstrap/` and pointed at `clusters/on-prem/`.
 
-**Run manually by human:**
+**Requires cluster access:**
 ```bash
 flux bootstrap github \
   --owner=zavestudios \
   --repository=gitops \
   --branch=main \
-  --path=clusters/sandbox
+  --path=clusters/on-prem
 ```
 
 ---
@@ -212,7 +212,7 @@ flux bootstrap github \
 **Namespace:** `argocd` (managed by Big Bang)
 
 **Access:**
-- UI: `https://argocd-sandbox.zavestudios.com` (TBD - requires ingress configuration)
+- UI: `https://argocd.zavestudios.com` (configured via BigBang)
 - CLI: `argocd login <server>` (requires credentials)
 
 **Tenant RBAC:** (TBD - requires AppProject and RBAC policy definition)
