@@ -109,6 +109,21 @@ Environment-specific access mechanics are allowed only when they are:
 - Replaceable without changing repository structure or playbook/workload logic.
 - Consistent with platform security controls and host identity verification.
 
+**AI Workload Portability:**
+
+The platform targets **CNCF Kubernetes AI Conformance** certification to ensure AI/ML workloads remain portable across conformant infrastructure environments.
+
+CNCF AI Conformance standardizes GPU integration, volume handling, job-level networking, and framework support requirements. This guarantees that tenants declaring GPU resource tiers or AI capability modules receive consistent behavior across all platform environments that support those tiers.
+
+Portability for AI workloads means:
+
+- GPU allocation is declared via contract resource tiers, not environment-specific device requests
+- AI frameworks operate using standard Kubernetes APIs, not vendor-specific extensions
+- Model training and inference workloads can migrate between conformant clusters without code changes
+- Infrastructure teams can upgrade or replace GPU hardware without tenant workload modifications
+
+Infrastructure conformance is platform-owned. Tenants declare GPU resource requirements in contracts; the platform ensures conformant execution across certified environments.
+
 ---
 
 ## 8. Measurable Leverage
