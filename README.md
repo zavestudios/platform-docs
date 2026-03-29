@@ -33,6 +33,9 @@ It does not replace per-repo documentation for service-specific implementation d
 - **CONTROL_PLANE_MODEL.md**
   Authority layers, control flow, and exception rules.
 
+- **DIAGNOSTIC_MODEL.md**
+  Diagnostic reasoning model and gap-analysis lens across control-plane boundaries.
+
 - **CONTRACT_SCHEMA.md**
   Platform interface definitions and required contract structure.
 
@@ -53,6 +56,9 @@ It does not replace per-repo documentation for service-specific implementation d
 
 - **PR_WORKFLOW.md**
   Standard pull request workflow and conventions.
+
+- **RUNBOOK_METHODOLOGY.md**
+  Guidance for when runbooks should be created and how incident knowledge should be captured.
 
 ## Precedence
 
