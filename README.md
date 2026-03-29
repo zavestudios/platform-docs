@@ -51,6 +51,9 @@ It does not replace per-repo documentation for service-specific implementation d
 - **DEVELOPER_EXPERIENCE.md**
   Canonical developer experience standards for local development.
 
+- **EXECUTION_ENVIRONMENTS.md**
+  Canonical execution environments, available tools, and where platform operations should run.
+
 - **OPERATING_MODEL_VALIDATION.md**
   Executable validation checklist for the operating model.
 
