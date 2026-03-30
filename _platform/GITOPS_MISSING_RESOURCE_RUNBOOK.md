@@ -32,30 +32,23 @@ Typical examples:
 
 ---
 
-## Execution Environment
-
-Run cluster-side checks from the bastion host or another environment with
-cluster access.
-
-Per `EXECUTION_ENVIRONMENTS.md`:
-
-- workstation is for local repo inspection and manifest rendering
-- bastion is for `kubectl`, `flux`, `helm`, and runtime inspection
-
----
-
 ## Required Inputs
 
 Before starting, identify:
 
 - `<gitops-repo>`: owning GitOps repository
 - `<gitops-path>`: path in Git that should declare the resource
+- `<cluster-entrypoint-path>`: cluster or environment entrypoint that should
+  include the owning Kustomization or generated resource path
 - `<service-namespace>`: namespace where the service should exist
 - `<owning-kustomization>`: Flux Kustomization expected to apply the path
 - `<service-helmrelease>`: HelmRelease name if Helm/Big Bang is involved
 
 If these are not obvious, stop and determine ownership first using
 `REPO_TAXONOMY.md`, `OPERATING_MODEL.md`, and `GITOPS_MODEL.md`.
+
+Run each check from whatever execution environment has the required access and
+tools. The runbook does not require a single environment for all steps.
 
 ---
 
