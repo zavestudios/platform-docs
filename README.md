@@ -97,6 +97,8 @@ Read this repository like a small canonical handbook, not a wiki.
   User-journey appendix for developer workflows and DX gap analysis.
 - **EXECUTION_ENVIRONMENTS.md**
   Canonical execution environments, available tools, and where platform operations should run.
+- **GITOPS_MISSING_RESOURCE_RUNBOOK.md**
+  Generic runbook for diagnosing GitOps-managed services or workloads that appear absent from the cluster.
 - **PR_WORKFLOW.md**
   Standard pull request workflow and conventions.
 - **RUNBOOK_METHODOLOGY.md**
