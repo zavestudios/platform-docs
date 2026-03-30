@@ -8,6 +8,25 @@ This document defines the executable validation checklist for the ZaveStudios op
 
 For the canonical audit catalog, trigger matrix, evidence requirements, and review cadence, see `AUDIT_PROGRAM.md`.
 
+## Chapter Guide
+
+**Purpose**
+
+Provide the executable checklist for validating whether the platform still
+conforms to its documented operating model.
+
+**Read this when**
+
+- running routine platform conformance checks
+- performing a gap analysis after a major change or incident
+- preparing audit evidence for operating-model claims
+
+**Read next**
+
+- `AUDIT_PROGRAM.md` for audit cadence and evidence framing
+- `DIAGNOSTIC_MODEL.md` for interpreting ambiguous findings
+- `ENFORCEMENT_MATRIX.md` for where each rule is expected to be enforced
+
 It must be run according to the Execution Policy defined below.
 
 Validation proceeds in defined order. Governance clarity precedes runtime validation.
@@ -221,3 +240,12 @@ The operating model is considered validated when:
 ☐ Change propagation is predictable  
 ☐ Failures are contained  
 ☐ Public narrative does not distort authority
+
+---
+
+## See Also
+
+- `AUDIT_PROGRAM.md`
+- `DIAGNOSTIC_MODEL.md`
+- `ENFORCEMENT_MATRIX.md`
+- `EXECUTION_ENVIRONMENTS.md`

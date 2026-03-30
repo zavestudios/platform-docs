@@ -4,6 +4,26 @@
 
 This document defines the canonical classification of all repositories in the ZaveStudios organization.
 
+## Chapter Guide
+
+**Purpose**
+
+Provide the authoritative category model for repository roles across the
+platform.
+
+**Read this when**
+
+- deciding which repository should own a change
+- determining whether a repository is operating inside its allowed scope
+- performing cross-repo impact analysis or taxonomy-based audits
+
+**Read next**
+
+- `OPERATING_MODEL.md` for how these repository classes interact
+- `ENFORCEMENT_MATRIX.md` for how taxonomy rules are enforced
+- `POC_GOVERNANCE.md` when a repository may need to remain outside governed
+  platform scope
+
 It exists to eliminate ambiguity for:
 
 - Humans navigating the system
@@ -248,3 +268,12 @@ Governance implication:
 
 Ambiguity is architectural debt.
 Classification changes must be deliberate and reviewable.
+
+---
+
+## See Also
+
+- `OPERATING_MODEL.md`
+- `ENFORCEMENT_MATRIX.md`
+- `POC_GOVERNANCE.md`
+- `GITOPS_MODEL.md`
