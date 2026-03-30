@@ -215,6 +215,11 @@ Promotion rule:
 - promote to `platform-docs` when the lesson changes platform-wide operating
   practice
 
+Example generic runbooks:
+
+- `GITOPS_MISSING_RESOURCE_RUNBOOK.md` for services that appear absent from the
+  cluster and require boundary-by-boundary GitOps diagnosis
+
 ---
 
 ## Desired Outcome
@@ -237,3 +242,4 @@ The standard of success is:
 - `CONTROL_PLANE_MODEL.md`
 - `EXECUTION_ENVIRONMENTS.md`
 - `PR_WORKFLOW.md`
+- `GITOPS_MISSING_RESOURCE_RUNBOOK.md`
