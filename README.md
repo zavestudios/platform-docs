@@ -93,6 +93,8 @@ Read this repository like a small canonical handbook, not a wiki.
 
 - **DEVELOPER_EXPERIENCE.md**
   Canonical developer experience standards for local development.
+- **DEVELOPER_EXPERIENCE_JOURNEYS.md**
+  User-journey appendix for developer workflows and DX gap analysis.
 - **EXECUTION_ENVIRONMENTS.md**
   Canonical execution environments, available tools, and where platform operations should run.
 - **PR_WORKFLOW.md**
@@ -122,7 +124,9 @@ Read this repository like a small canonical handbook, not a wiki.
 - **MEASUREMENT_MODEL.md**
   What platform outcomes should be measured and why.
 - **FRICTION_FEEDBACK.md**
-  How friction is captured and used to improve the platform path.
+  Core policy for how friction is captured and turned into platform improvement.
+- **FRICTION_FEEDBACK_PLAYBOOK.md**
+  Operational playbook, templates, and recurring review flow for friction handling.
 - **AUDIT_PROGRAM.md**
   Audit expectations for platform behavior and evidence collection.
 

@@ -2,6 +2,25 @@
 
 This document defines the governance model for POC (proof-of-concept) repositories.
 
+## Chapter Guide
+
+**Purpose**
+
+Define how exploratory repositories are governed outside the normal platform
+contract path.
+
+**Read this when**
+
+- deciding whether work should remain a POC or enter governed platform scope
+- reviewing what POCs are exempt from
+- setting expectations for exploratory repository quality and lifecycle
+
+**Read next**
+
+- `POC_LIFECYCLE.md` for state transitions
+- `POC_GRADUATION.md` for the move into governed categories
+- `REPO_TAXONOMY.md` for where POCs sit relative to the governed repo model
+
 POC repositories are exploratory and explicitly NOT governed by platform contracts, lifecycle rules, or GitOps reconciliation.
 
 ---
@@ -283,3 +302,12 @@ POCs are portfolio assets. They demonstrate not just "can you code?" but "can yo
 - **POC_GRADUATION.md** — Graduation process from POC to contract-governed repo
 - **REPO_TAXONOMY.md** — Canonical repository classification
 - **OPERATING_MODEL.md** — Platform workload governance (what POCs are exempt from)
+
+---
+
+## See Also
+
+- `POC_LIFECYCLE.md`
+- `POC_GRADUATION.md`
+- `REPO_TAXONOMY.md`
+- `OPERATING_MODEL.md`

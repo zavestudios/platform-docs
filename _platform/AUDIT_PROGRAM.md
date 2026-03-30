@@ -4,6 +4,25 @@ title: "AUDIT_PROGRAM"
 
 # ZaveStudios Audit Program
 
+## Chapter Guide
+
+**Purpose**
+
+Define the canonical audit catalog, triggers, outputs, and completion standard
+for platform review work.
+
+**Read this when**
+
+- planning a platform audit or assessment
+- determining which audit applies to a given event or repository change
+- preparing evidence expectations for validation or enforcement review
+
+**Read next**
+
+- `OPERATING_MODEL_VALIDATION.md` for the executable operating-model checklist
+- `ENFORCEMENT_MATRIX.md` for enforcement evidence expectations
+- `DIAGNOSTIC_MODEL.md` for interpreting ambiguous findings
+
 This document defines the canonical audit and assessment program for the ZaveStudios platform.
 
 It answers four questions:
@@ -328,3 +347,12 @@ An audit is complete only when:
 - remediation or acceptance is explicit
 
 If an audit discovers a gap but does not record whether it is a failure, accepted exception, or deferred work item, the audit is incomplete.
+
+---
+
+## See Also
+
+- `OPERATING_MODEL_VALIDATION.md`
+- `ENFORCEMENT_MATRIX.md`
+- `DIAGNOSTIC_MODEL.md`
+- `MEASUREMENT_MODEL.md`

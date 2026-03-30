@@ -2,6 +2,24 @@
 
 This document defines the **authoritative workload contract** for the ZaveStudios platform.
 
+## Chapter Guide
+
+**Purpose**
+
+Define the canonical workload intent surface for governed workloads.
+
+**Read this when**
+
+- changing or reviewing contract shape
+- deciding whether a workload behavior belongs in the platform surface
+- tracing downstream behavior back to contract-declared intent
+
+**Read next**
+
+- `CONTRACT_VALIDATION.md` for enforcement of this schema
+- `GENERATOR_MODEL.md` for how this contract is materialized
+- `LIFECYCLE_MODEL.md` for how contract changes move through the platform
+
 The contract is the sole workload interface to the platform (tenant and portfolio).
 Repositories, pipelines, infrastructure, and runtime configuration must be derived from this file.
 
@@ -390,3 +408,12 @@ Every downstream system must derive from it:
 - governance enforcement
 
 If a behavior cannot be derived from the contract, it should not exist in the platform.
+
+---
+
+## See Also
+
+- `CONTRACT_VALIDATION.md`
+- `GENERATOR_MODEL.md`
+- `LIFECYCLE_MODEL.md`
+- `ARCHITECTURAL_DOCTRINE_TIER0.md`

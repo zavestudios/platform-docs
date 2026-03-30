@@ -2,6 +2,25 @@
 
 This document defines how POC repositories graduate to contract-governed categories (tenant, platform-service, or infrastructure).
 
+## Chapter Guide
+
+**Purpose**
+
+Define the clean migration path from exploratory repositories into governed
+platform categories.
+
+**Read this when**
+
+- a POC is ready to be adopted
+- deciding whether to migrate, archive, or continue exploring
+- reviewing how generated structure should replace exploratory structure
+
+**Read next**
+
+- `POC_GOVERNANCE.md` for the source-state expectations
+- `POC_LIFECYCLE.md` for lifecycle boundaries
+- `GENERATOR_MODEL.md` for how the new governed repo should be created
+
 Graduation occurs when a POC proves a concept viable and the decision is made to adopt it for production use.
 
 ---
@@ -392,3 +411,12 @@ Graduation converts validated exploration into governed execution.
 - **GENERATOR_MODEL.md** — How generators create contract-governed repos
 - **LIFECYCLE_MODEL.md** — Platform workload lifecycle (what graduated repos enter)
 - **REPO_TAXONOMY.md** — Repository classification
+
+---
+
+## See Also
+
+- `POC_GOVERNANCE.md`
+- `POC_LIFECYCLE.md`
+- `GENERATOR_MODEL.md`
+- `LIFECYCLE_MODEL.md`
