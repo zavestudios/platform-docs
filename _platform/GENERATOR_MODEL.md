@@ -2,6 +2,26 @@
 
 This document defines how validated workload contracts are transformed into concrete platform artifacts.
 
+## Chapter Guide
+
+**Purpose**
+
+Define how validated workload intent is deterministically transformed into
+platform artifacts.
+
+**Read this when**
+
+- reviewing how scaffolding or generated output should behave
+- deciding whether a proposed generation behavior is contract-derived or
+  invented
+- tracing changes from contract to repository or GitOps artifacts
+
+**Read next**
+
+- `CONTRACT_SCHEMA.md` for the input surface
+- `CONTRACT_VALIDATION.md` for the gate ahead of generation
+- `GITOPS_MODEL.md` for where generated state becomes runtime authority
+
 Generators are the mechanism by which the platform materializes intent into execution.
 
 If the contract defines *what* the tenant wants, generators define *how* the platform fulfills it.
@@ -231,3 +251,12 @@ Generators become the compiler.
 GitOps becomes the runtime scheduler.
 
 When generators are stable, the platform becomes predictable, scalable, and safe.
+
+---
+
+## See Also
+
+- `CONTRACT_SCHEMA.md`
+- `CONTRACT_VALIDATION.md`
+- `GITOPS_MODEL.md`
+- `DEVELOPER_EXPERIENCE.md`

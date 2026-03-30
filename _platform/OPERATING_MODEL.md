@@ -1,5 +1,24 @@
 # ZaveStudios — Platform Operating Model v0.1.5 (Formation Phase)
 
+## Chapter Guide
+
+**Purpose**
+
+Describe how the platform currently operates across repositories during the
+formation phase.
+
+**Read this when**
+
+- determining which repository should carry a change
+- deciding whether a behavior is current-state policy or target-state intent
+- reviewing cross-repository impact during platform changes
+
+**Read next**
+
+- `CONTROL_PLANE_MODEL.md` for authority boundaries
+- `EXECUTION_ENVIRONMENTS.md` for where operations should run
+- `PR_WORKFLOW.md` for how changes should move through review
+
 ## Phase Definition
 
 ZaveStudios is currently in **Platform Formation**, not Platform Operation.
@@ -502,3 +521,13 @@ Success depends less on adding features and more on:
 - encoding repository semantics
 - elevating GitOps to lifecycle authority
 - ensuring the reference path is always the fastest path  
+
+---
+
+## See Also
+
+- `ARCHITECTURAL_DOCTRINE_TIER0.md`
+- `CONTROL_PLANE_MODEL.md`
+- `REPO_TAXONOMY.md`
+- `EXECUTION_ENVIRONMENTS.md`
+- `PR_WORKFLOW.md`

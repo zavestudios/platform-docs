@@ -1,5 +1,23 @@
 # ZaveStudios — Tier 0 Architectural Doctrine
 
+## Chapter Guide
+
+**Purpose**
+
+Define the non-negotiable architectural invariants for the platform.
+
+**Read this when**
+
+- deciding whether a proposed platform change is allowed in principle
+- checking whether a lower-order document or implementation has crossed a hard boundary
+- performing gap analysis against the platform's intended identity
+
+**Read next**
+
+- `OPERATING_MODEL.md` for how these invariants are implemented across repositories
+- `CONTROL_PLANE_MODEL.md` for where authority resides at runtime
+- `DIAGNOSTIC_MODEL.md` for how to inspect gaps when reality diverges from doctrine
+
 ## 1. Identity
 
 ZaveStudios is a reference implementation of an opinionated Internal Developer Platform (IDP) that reduces infrastructure decisions to a bounded declarative contract while guaranteeing delivery, governance, and safe evolution.
@@ -137,3 +155,12 @@ ZaveStudios creates leverage by:
 - Converting repeated tenant solutions into reusable platform capabilities.
 
 The constrained path must always be faster, safer, and easier than deviation.
+
+---
+
+## See Also
+
+- `OPERATING_MODEL.md`
+- `CONTROL_PLANE_MODEL.md`
+- `LIFECYCLE_MODEL.md`
+- `DIAGNOSTIC_MODEL.md`

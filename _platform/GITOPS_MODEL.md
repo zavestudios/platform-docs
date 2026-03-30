@@ -4,6 +4,25 @@ This document defines how GitOps reconciliation operates within the ZaveStudios 
 
 It clarifies the split between FluxCD and ArgoCD and their respective responsibilities.
 
+## Chapter Guide
+
+**Purpose**
+
+Describe how desired state is represented, reconciled, and divided between the
+platform and workload GitOps planes.
+
+**Read this when**
+
+- a troubleshooting path reaches the GitOps plane
+- you need to decide whether FluxCD or ArgoCD owns a change
+- you are reviewing drift, reconciliation, or deployment-authority questions
+
+**Read next**
+
+- `CONTROL_PLANE_MODEL.md` for authority boundaries
+- `LIFECYCLE_MODEL.md` for state transitions
+- `EXECUTION_ENVIRONMENTS.md` for where GitOps operations should run
+
 ---
 
 ## GitOps Plane Authority
@@ -244,4 +263,5 @@ The boundary between them must remain clear and enforceable.
 - `LIFECYCLE_MODEL.md` — Describes workload state transitions
 - `OPERATING_MODEL.md` — Formation phase expectations
 - `REPO_TAXONOMY.md` — Classifies gitops as infrastructure repository
+- `DIAGNOSTIC_MODEL.md` — Gap-analysis lens for rendered vs live state
 - `TENANT_ONBOARDING_NOTES.md` — Cross-repo onboarding constraints and lessons

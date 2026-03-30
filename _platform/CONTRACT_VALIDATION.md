@@ -2,6 +2,25 @@
 
 This document defines how workload contracts are validated, enforced, and rejected within the ZaveStudios platform.
 
+## Chapter Guide
+
+**Purpose**
+
+Define how the canonical workload contract is accepted or rejected before it can
+drive platform behavior.
+
+**Read this when**
+
+- evaluating validation stages or failure modes
+- reviewing whether a proposed contract addition can be enforced safely
+- mapping contract semantics to automated gates
+
+**Read next**
+
+- `CONTRACT_SCHEMA.md` for the authoritative shape being validated
+- `ENFORCEMENT_MATRIX.md` for where validation is enforced
+- `GENERATOR_MODEL.md` for what validated contracts are allowed to drive
+
 The goal of validation is not correctness alone.  
 It is to guarantee that every accepted contract can be safely materialized into infrastructure, pipelines, and runtime state without human interpretation.
 
@@ -241,3 +260,12 @@ Without validation, the schema is advisory.
 With validation, the schema becomes the platform boundary.
 
 Every automated system in ZaveStudios must trust validation as the gatekeeper of platform safety.
+
+---
+
+## See Also
+
+- `CONTRACT_SCHEMA.md`
+- `ENFORCEMENT_MATRIX.md`
+- `GENERATOR_MODEL.md`
+- `LIFECYCLE_MODEL.md`

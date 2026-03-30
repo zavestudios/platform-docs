@@ -4,6 +4,25 @@
 
 This document maps platform rules to executable enforcement points.
 
+## Chapter Guide
+
+**Purpose**
+
+Translate platform doctrine into concrete enforcement locations, mechanisms, and
+evidence expectations.
+
+**Read this when**
+
+- deciding whether a rule is advisory or enforceable
+- tracing a platform invariant to its actual control point
+- performing gap analysis on missing or weak enforcement
+
+**Read next**
+
+- `CONTRACT_VALIDATION.md` for validation semantics
+- `OPERATING_MODEL_VALIDATION.md` for executable review flow
+- `AUDIT_PROGRAM.md` for evidence and audit expectations
+
 It is an implementation bridge between doctrine and operations.
 It does not redefine canonical governance, contract schema, lifecycle semantics, or repository taxonomy.
 
@@ -80,3 +99,12 @@ Each enforcement check should emit machine-verifiable evidence:
 - minimal remediation guidance
 
 Enforcement without evidence is not auditable.
+
+---
+
+## See Also
+
+- `CONTRACT_VALIDATION.md`
+- `OPERATING_MODEL_VALIDATION.md`
+- `AUDIT_PROGRAM.md`
+- `REPO_TAXONOMY.md`

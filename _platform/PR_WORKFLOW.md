@@ -1,5 +1,23 @@
 # Pull Request Workflow
 
+## Chapter Guide
+
+**Purpose**
+
+Define the standard change path for governed repositories.
+
+**Read this when**
+
+- preparing to land a platform change
+- checking whether a branch, commit, or review flow is conformant
+- deciding how durable follow-up work from an incident should be carried
+
+**Read next**
+
+- `OPERATING_MODEL.md` for cross-repo change expectations
+- `RUNBOOK_METHODOLOGY.md` for converting incident findings into follow-up work
+- `DEVELOPER_EXPERIENCE.md` for local branch and workspace conventions
+
 ## Standard Workflow
 
 When completing work on a feature branch:
@@ -71,3 +89,12 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 - Lost work from force pushes
 - Breaking changes without discussion
 - Direct main branch commits
+
+---
+
+## See Also
+
+- `OPERATING_MODEL.md`
+- `RUNBOOK_METHODOLOGY.md`
+- `DEVELOPER_EXPERIENCE.md`
+- `ENFORCEMENT_MATRIX.md`

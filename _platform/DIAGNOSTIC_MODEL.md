@@ -3,6 +3,25 @@
 This defines how the platform should be reasoned about during troubleshooting,
 gap analysis, and operational review.
 
+## Chapter Guide
+
+**Purpose**
+
+Provide the diagnostic lens for reasoning across control-plane boundaries and
+for identifying operability gaps.
+
+**Read this when**
+
+- an incident spans multiple repositories or controllers
+- you need a generic gap-analysis method rather than an app-specific checklist
+- you are deciding what knowledge should become a runbook or doctrine update
+
+**Read next**
+
+- `RUNBOOK_METHODOLOGY.md` for capture discipline
+- `EXECUTION_ENVIRONMENTS.md` for where to execute diagnostic steps
+- `OPERATING_MODEL_VALIDATION.md` for structured validation of platform behavior
+
 The objective is not to make incidents disappear.
 The objective is to make the system legible enough that incidents stop consuming
 time through repeated ambiguity.
@@ -228,3 +247,12 @@ The standard is:
 - the platform becomes easier to reason about after each incident
 
 That is how a platform becomes operationally mature.
+
+---
+
+## See Also
+
+- `CONTROL_PLANE_MODEL.md`
+- `RUNBOOK_METHODOLOGY.md`
+- `EXECUTION_ENVIRONMENTS.md`
+- `OPERATING_MODEL_VALIDATION.md`

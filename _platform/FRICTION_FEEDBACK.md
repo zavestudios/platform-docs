@@ -2,6 +2,26 @@
 
 This document defines the process for collecting, triaging, and resolving developer friction points.
 
+## Chapter Guide
+
+**Purpose**
+
+Define the policy and control loop for turning developer friction into platform
+improvement.
+
+**Read this when**
+
+- deciding whether a pain point is platform friction
+- designing or reviewing the friction intake and triage path
+- connecting DX findings to roadmap and platform changes
+
+**Read next**
+
+- `FRICTION_FEEDBACK_PLAYBOOK.md` for the recurring operating routine and
+  templates
+- `MEASUREMENT_MODEL.md` for friction metrics
+- `DEVELOPER_EXPERIENCE_JOURNEYS.md` for journey-based sources of friction
+
 It exists to close the loop: **tenant pain → platform improvement**.
 
 Without a structured feedback mechanism, friction points are:
@@ -455,73 +475,24 @@ This is the operational implementation of DORA's finding:
 
 ---
 
-## Quick Start Guide
+## Companion Appendix
 
-**For Tenants**:
+The operating appendix for this mechanism lives in
+`FRICTION_FEEDBACK_PLAYBOOK.md`.
 
-1. Hit a friction point? Submit to GitHub Discussions → "Friction Points"
-2. Use template, be specific about impact and frequency
-3. Upvote others' friction points you also experience
-4. Watch for DX PM triage response (target: <1 week)
-5. Track resolution in changelog
+Use that document for:
 
-**For DX PM**:
-
-1. Weekly: Review new friction point submissions, triage and label
-2. Monthly: Review trends with platform team, update roadmap
-3. Quarterly: Publish friction report summary
-4. Ongoing: Convert quick fixes to PRs, roadmap items to Issues
-
-**For Platform Team**:
-
-1. Monitor "friction: [category]" labels for relevant items
-2. Prioritize quick fixes (<1 day) when possible
-3. Include friction-driven items in roadmap planning
-4. Update changelog when friction is resolved
-5. Celebrate friction reduction as success metric
+- monthly and quarterly review routines
+- public friction report templates
+- implementation checklist
+- quick-start guidance for tenants, DX PM, and platform team
+- worked example lifecycle
 
 ---
 
-## Implementation Checklist
+## See Also
 
-**Initial Setup** (Formation Phase):
-
-- [ ] Enable GitHub Discussions on `platform-docs` repository
-- [ ] Create "Friction Points" discussion category
-- [ ] Pin friction point submission template as guidance
-- [ ] Announce feedback mechanism to all tenant teams
-- [ ] Add friction feedback link to platform documentation
-- [ ] Schedule weekly DX PM triage time
-- [ ] Schedule monthly platform team review
-
-**Ongoing Operations**:
-
-- [ ] Weekly triage by DX PM
-- [ ] Monthly trend review with platform team
-- [ ] Quarterly public friction report
-- [ ] Track metrics in MEASUREMENT_MODEL.md dashboard
-
-**Measurement**:
-
-- [ ] Count friction submissions (expect initial spike as awareness grows)
-- [ ] Track resolution rate (target ≥70%)
-- [ ] Monitor high-impact friction (100% addressed)
-- [ ] Measure Time to First Deploy trend (should decrease as friction resolves)
-
----
-
-## Example Friction Point Lifecycle
-
-**Week 1**: Tenant submits "Adding database requires 30min of manual docker-compose edits"
-
-**Week 1 (Triage)**: DX PM labels `friction: automation`, `impact: high`, `status: triaged`, comments "Great catch, this affects onboarding for any workload with persistence. Adding to roadmap for generator automation."
-
-**Week 2-8**: Marked as roadmap item, linked to generator Epic
-
-**Week 9**: Platform team implements generator feature to auto-create docker-compose from contract
-
-**Week 10**: PR merged, DX PM comments "Resolved in PR #456, now `zave init` generates docker-compose automatically", closes Discussion with `status: resolved`
-
-**Quarter End**: Included in friction report: "Resolved: Database setup friction reduced from 30min to <1min via generator automation"
-
-**Result**: Time to First Deploy decreases, CSAT improves, tenant trust in feedback mechanism increases
+- `FRICTION_FEEDBACK_PLAYBOOK.md`
+- `MEASUREMENT_MODEL.md`
+- `DEVELOPER_EXPERIENCE_JOURNEYS.md`
+- `POC_GOVERNANCE.md`

@@ -2,6 +2,25 @@
 
 This document defines the mechanical lifecycle of a workload within the ZaveStudios platform.
 
+## Chapter Guide
+
+**Purpose**
+
+Define the allowed state transitions for workloads from creation through
+decommissioning.
+
+**Read this when**
+
+- reviewing how a workload should move through the platform
+- assessing whether a proposed change introduces an unsupported transition
+- connecting contract changes to GitOps and runtime consequences
+
+**Read next**
+
+- `CONTRACT_SCHEMA.md` for the intent surface that drives lifecycle transitions
+- `GENERATOR_MODEL.md` for artifact generation behavior
+- `GITOPS_MODEL.md` for how declared state is enacted
+
 The lifecycle describes how a workload moves from creation to execution, evolves over time, and is eventually removed.  
 All transitions are contract-driven and enforced through GitOps reconciliation.
 
@@ -289,3 +308,12 @@ Contracts define intent.
 Generators produce artifacts.  
 GitOps enacts state.  
 The lifecycle defines how change is allowed to occur.
+
+---
+
+## See Also
+
+- `CONTRACT_SCHEMA.md`
+- `GENERATOR_MODEL.md`
+- `GITOPS_MODEL.md`
+- `CONTROL_PLANE_MODEL.md`

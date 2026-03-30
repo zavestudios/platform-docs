@@ -2,6 +2,25 @@
 
 This document defines the canonical metrics and measurement practices for the ZaveStudios platform.
 
+## Chapter Guide
+
+**Purpose**
+
+Define which platform outcomes are measured, why they matter, and how they
+should influence decisions.
+
+**Read this when**
+
+- evaluating whether the platform is improving in meaningful ways
+- selecting metrics for a gap analysis, audit, or quarterly review
+- deciding whether a metric supports a real decision or just reporting theater
+
+**Read next**
+
+- `FRICTION_FEEDBACK.md` for a key measurement input loop
+- `AUDIT_PROGRAM.md` for review cadence and evidence framing
+- `DEVELOPER_EXPERIENCE_JOURNEYS.md` for journey-based targets
+
 It exists to:
 
 - Track platform health and effectiveness
@@ -374,3 +393,12 @@ With measurement, platform success is demonstrable fact.
 - DORA Four Keys: https://dora.dev/
 - State of DevOps Report: https://dora.dev/research/
 - Team Topologies (cognitive load): https://teamtopologies.com/
+
+---
+
+## See Also
+
+- `FRICTION_FEEDBACK.md`
+- `AUDIT_PROGRAM.md`
+- `DEVELOPER_EXPERIENCE_JOURNEYS.md`
+- `OPERATING_MODEL.md`

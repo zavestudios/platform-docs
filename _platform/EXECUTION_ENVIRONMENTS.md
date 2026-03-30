@@ -2,6 +2,27 @@
 
 This document defines where platform operators execute commands and which tools are available in each environment.
 
+## Chapter Guide
+
+**Purpose**
+
+Declare where platform work should run and which tools are expected in each
+environment.
+
+**Read this when**
+
+- an operator or agent needs to decide where to run a command
+- you are separating local development work from platform operations
+- a troubleshooting path crosses workstation, bastion, CI, or in-cluster
+  boundaries
+
+**Read next**
+
+- `DEVELOPER_EXPERIENCE.md` for workstation constraints
+- `DIAGNOSTIC_MODEL.md` for control-plane-first troubleshooting
+- `RUNBOOK_METHODOLOGY.md` for promoting recurring environment confusion into
+  durable operating knowledge
+
 ## Purpose
 
 Platform operations require different tools and access patterns. Without clear documentation, operators must:
@@ -649,3 +670,5 @@ to
 - **OPERATING_MODEL.md** — Formation phase automation priorities
 - **PR_WORKFLOW.md** — All changes via Git and PR review
 - **CONTROL_PLANE_MODEL.md** — GitOps as state authority
+- **DIAGNOSTIC_MODEL.md** — Troubleshooting across rendered and live state boundaries
+- **RUNBOOK_METHODOLOGY.md** — When environment-specific friction should become reusable guidance

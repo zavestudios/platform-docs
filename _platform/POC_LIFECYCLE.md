@@ -2,6 +2,25 @@
 
 This document defines the lifecycle states for POC (proof-of-concept) repositories.
 
+## Chapter Guide
+
+**Purpose**
+
+Define the allowed state transitions for exploratory repositories outside the
+governed workload lifecycle.
+
+**Read this when**
+
+- determining where a POC sits in its exploratory path
+- deciding whether a repository should archive or graduate
+- comparing exploratory lifecycle to governed workload lifecycle
+
+**Read next**
+
+- `POC_GOVERNANCE.md` for quality and exemption rules
+- `POC_GRADUATION.md` for the graduation path
+- `LIFECYCLE_MODEL.md` for the governed lifecycle that POCs do not follow
+
 POC lifecycle is simpler than platform workload lifecycle. POCs are exploratory and not subject to contract validation, generators, or GitOps reconciliation.
 
 ---
@@ -324,3 +343,12 @@ POC lifecycle converts experimentation from chaos into a repeatable, documented 
 - **POC_GRADUATION.md** — Graduation process from POC to contract-governed repo
 - **LIFECYCLE_MODEL.md** — Platform workload lifecycle (what POCs are exempt from)
 - **REPO_TAXONOMY.md** — Repository classification including POC category
+
+---
+
+## See Also
+
+- `POC_GOVERNANCE.md`
+- `POC_GRADUATION.md`
+- `LIFECYCLE_MODEL.md`
+- `REPO_TAXONOMY.md`
