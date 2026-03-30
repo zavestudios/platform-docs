@@ -309,6 +309,96 @@ Raw resource requests must not be tenant-defined.
 
 ---
 
+# AI Workload Support (Reserved for Future Versions)
+
+The ZaveStudios platform infrastructure targets **CNCF Kubernetes AI Conformance** certification to ensure AI/ML workloads are portable, reproducible, and interoperable across conformant environments.
+
+CNCF AI Conformance guarantees that AI workloads using standard Kubernetes APIs can run consistently across certified platforms without environment-specific customization.
+
+**Formation v0.1 Status:**
+
+AI workloads are currently supported as standard container workloads. Future contract versions will introduce AI-specific abstractions.
+
+**Resources Section — GPU Support (Reserved):**
+
+Future versions may support GPU resource tiers:
+
+```yaml
+spec:
+  resources:
+    tier: gpu-small  # Reserved: gpu-small, gpu-standard, gpu-large
+```
+
+GPU tiers would map to:
+
+- GPU allocation and scheduling
+- Accelerator-optimized node selection
+- Cost controls and quota management
+- CUDA/ROCm driver compatibility
+
+**Runtime Section — AI Runtimes (Reserved):**
+
+Future versions may support AI-specific runtime types:
+
+```yaml
+spec:
+  runtime: ai-training  # Reserved: ai-training, ai-inference, ai-batch
+```
+
+These runtime types would determine:
+
+- Job execution patterns (training vs inference workloads)
+- Resource lifecycle (ephemeral training jobs vs long-lived inference services)
+- Autoscaling behavior (batch-oriented vs request-driven)
+
+**Capability Section — AI Modules (Reserved):**
+
+Future versions may support AI-specific capabilities:
+
+```yaml
+spec:
+  capabilities:
+    - name: ai-training    # Reserved: distributed training orchestration
+    - name: ai-inference   # Reserved: model serving and inference optimization
+    - name: model-registry # Reserved: model versioning and artifact management
+```
+
+**Formation v0.1 Workaround:**
+
+During Formation, AI workloads use the existing contract model:
+
+```yaml
+apiVersion: zave.io/v1
+kind: Workload
+metadata:
+  name: ml-model-training
+
+spec:
+  runtime: container      # Standard container runtime
+  exposure: none          # Training jobs may not need ingress
+  delivery: rolling       # Or future: job-based delivery
+
+  build:
+    mode: dockerfile      # Dockerfile with ML framework dependencies
+
+  persistence:
+    engine: postgres      # For experiment tracking, model metadata
+
+  resources:
+    tier: large           # Request large tier; GPU allocation is infrastructure-level config
+```
+
+Infrastructure teams configure GPU node pools and scheduling separately. Contract-based GPU allocation is reserved for future versions.
+
+**Rationale:**
+
+- **Portability**: CNCF AI Conformance ensures GPU workloads remain portable across certified clusters
+- **Bounded variance**: AI workloads declare resource tiers, not raw CUDA device requests
+- **Infrastructure separation**: Platform owns GPU provisioning and node configuration
+- **Formation discipline**: Reserve AI-specific abstractions until contract schema stabilizes
+
+---
+
 # Full Example
 
 ```yaml

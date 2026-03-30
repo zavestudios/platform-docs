@@ -168,6 +168,14 @@ Tenant workload deployment follows this sequence:
 6. **ArgoCD syncs** - ArgoCD detects Application resource and syncs manifests to cluster
 7. **Tenant monitors** - Tenant views deployment status via ArgoCD UI
 
+Secret and dependency prerequisites remain part of the same onboarding flow:
+
+- required Vault paths must exist
+- External Secrets Operator must be authorized to read those tenant paths
+- shared platform dependencies must already exist when the tenant contract depends on them
+
+GitOps registration alone does not make a tenant deployable.
+
 ### Formation Phase (v0.1)
 
 During Formation, steps 3-4 are **manual**:
@@ -256,3 +264,4 @@ The boundary between them must remain clear and enforceable.
 - `OPERATING_MODEL.md` — Formation phase expectations
 - `REPO_TAXONOMY.md` — Classifies gitops as infrastructure repository
 - `DIAGNOSTIC_MODEL.md` — Gap-analysis lens for rendered vs live state
+- `TENANT_ONBOARDING_NOTES.md` — Cross-repo onboarding constraints and lessons

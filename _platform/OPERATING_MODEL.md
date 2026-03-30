@@ -59,11 +59,12 @@ Until these stabilize, new capability growth should be constrained.
 | Capability | Formation v0.1 (Implemented) | Target State |
 | --- | --- | --- |
 | Canonical contract shape | Yes (`apiVersion/kind/metadata/spec`) | Stable across versions |
-| Runtime support | `container`, `static` | Managed runtime families (`node/python/go/java`) |
+| Runtime support | `container`, `static` | Managed runtime families (`node/python/go/java`), AI runtimes (`ai-training/ai-inference`) |
 | Build mode | `dockerfile` | Additional managed build modes |
 | Delivery strategies | `rolling` | `recreate`, `blue-green`, `canary` |
 | Bootstrap command | Template/manual scaffolding | `zave init <workload-type>` |
 | GitOps authority | GitOps-first + explicit exceptions | Full lifecycle authority with no routine manual steps |
+| AI workload support | Container runtime + manual GPU config | GPU resource tiers, AI-specific capabilities, CNCF AI Conformance |
 
 ---
 
