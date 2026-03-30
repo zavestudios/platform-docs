@@ -3,6 +3,26 @@
 This defines when runbooks should be created, what they should contain, and how
 incident knowledge should be captured before it is forgotten.
 
+## Chapter Guide
+
+**Purpose**
+
+Define how troubleshooting knowledge is captured, promoted, and turned into
+reusable operating artifacts.
+
+**Read this when**
+
+- a session has become expensive enough that its lessons should not be lost
+- you need to decide whether something belongs in a local note, a runbook, or
+  platform doctrine
+- you are standardizing how agents and humans preserve diagnostic history
+
+**Read next**
+
+- `DIAGNOSTIC_MODEL.md` for the reasoning model that runbooks should encode
+- `EXECUTION_ENVIRONMENTS.md` for where platform actions are expected to run
+- `PR_WORKFLOW.md` for how durable follow-up changes should land
+
 The goal is not to predict every incident in advance.
 The goal is to make expensive troubleshooting sessions produce reusable operating
 knowledge.
@@ -208,3 +228,12 @@ The standard of success is:
 - the team stops repeating the same failed guesses
 - manual repairs are visible and backported
 - control planes become more explicit over time
+
+---
+
+## See Also
+
+- `DIAGNOSTIC_MODEL.md`
+- `CONTROL_PLANE_MODEL.md`
+- `EXECUTION_ENVIRONMENTS.md`
+- `PR_WORKFLOW.md`

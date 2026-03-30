@@ -2,6 +2,26 @@
 
 This defines where authority resides across the system.
 
+## Chapter Guide
+
+**Purpose**
+
+Define the platform's authority boundaries from declared intent to live system
+behavior.
+
+**Read this when**
+
+- you need to know which layer owns truth
+- you are debugging stale or conflicting state
+- you are assessing whether a controller or workflow bypasses an intended plane
+
+**Read next**
+
+- `DIAGNOSTIC_MODEL.md` for how to investigate across these boundaries
+- `GITOPS_MODEL.md` for desired-state authority in practice
+- `RUNBOOK_METHODOLOGY.md` for converting repeated failures into reusable
+  operating knowledge
+
 ---
 
 ## Control Plane Layers
@@ -109,3 +129,13 @@ Each layer has a distinct responsibility:
 - **Runtime Plane** — executes the declared state
 
 These boundaries are architectural invariants. Violations create ambiguity and risk.
+
+---
+
+## See Also
+
+- `ARCHITECTURAL_DOCTRINE_TIER0.md`
+- `OPERATING_MODEL.md`
+- `DIAGNOSTIC_MODEL.md`
+- `GITOPS_MODEL.md`
+- `RUNBOOK_METHODOLOGY.md`
