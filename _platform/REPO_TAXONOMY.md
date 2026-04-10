@@ -115,6 +115,7 @@ This table is the canonical in-scope repository set for governed platform analys
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
 | `platform-docs` | control-plane | No | No | Yes | No |
+| `airflow` | platform-service | Yes | No | Yes | No |
 | `image-factory` | platform-service | No | No | Yes | Yes |
 | `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
 | `pg` | platform-service | No | No | Yes | Possibly |
@@ -123,7 +124,7 @@ This table is the canonical in-scope repository set for governed platform analys
 | `ansible` | infrastructure | No | Yes | No | No |
 | `gitops` | infrastructure | No | Yes | No | Possibly |
 | `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
-| `data-pipelines` | tenant | Yes | No | No | Yes |
+| `listings-ingest` | tenant | Yes | No | No | Yes |
 | `mia` | tenant | Yes | No | No | Yes |
 | `oracle` | tenant | Yes | No | No | Yes |
 | `panchito` | tenant | Yes | No | No | Yes |
@@ -142,6 +143,16 @@ This table is the canonical in-scope repository set for governed platform analys
 ## Classification Notes
 
 ### Platform Service Repositories
+
+**`airflow`**
+- Apache Airflow deployment for data pipeline orchestration
+- Shared platform capability serving tenant data workloads
+- Deployed to platform namespace via FluxCD HelmRelease
+- Uses KubernetesExecutor to create pods in tenant namespaces
+- Syncs DAGs from tenant repositories via git-sync
+- Classified as `platform-service` (provides reusable orchestration capability)
+- deploys_runtime: Yes (runs scheduler, webserver, triggerer in platform namespace)
+- provides_reusable_capability: Yes (DAG orchestration for tenant workloads)
 
 **`zave-cli`**
 - Workload generator CLI tool
