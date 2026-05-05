@@ -219,6 +219,52 @@ Once generators stabilize:
 
 ---
 
+## Reconciliation Layering
+
+FluxCD reconciliation has three distinct ordering mechanisms. Using the wrong one is a common source of stalls.
+
+### Kustomization `dependsOn`
+
+Controls inter-Kustomization ordering. Flux will not begin reconciling Kustomization B until Kustomization A has **applied** its resources (not necessarily until they are healthy).
+
+Use this for tier ordering — runtime before services, services before tenants.
+
+```yaml
+spec:
+  dependsOn:
+    - name: on-prem-platform-runtime
+```
+
+### HelmRelease `dependsOn`
+
+Controls intra-tier ordering. Use when one HelmRelease within a tier must be healthy before another starts — for example, an operator before its CRD-dependent workload.
+
+```yaml
+spec:
+  dependsOn:
+    - name: cert-manager
+      namespace: platform
+```
+
+### `wait: true` on a Kustomization
+
+Changes what "reconciled" means for a Kustomization from "resources applied" to "resources healthy." Flux will not mark the Kustomization ready until all applied resources report a healthy status.
+
+**This is a stall point.** If any resource in the Kustomization is unhealthy — including a HelmRelease that is cycling through upgrade retries — Flux marks the Kustomization as not ready and stops processing it. Subsequent git commits that fix the underlying issue will not be picked up until the Kustomization unstalls.
+
+**Decision rule:**
+
+- If nothing `dependsOn` this Kustomization, do not set `wait: true`. There is no downstream consumer waiting on the health signal, and the only effect is blocking self-reconciliation.
+- If a downstream Kustomization does `dependsOn` this one, evaluate whether health-gating is actually required. `dependsOn` without `wait: true` gives apply-ordering; `wait: true` adds health-gating. Most tier dependencies need ordering, not health-gating.
+
+**Operational rule:**
+
+When a Kustomization stalls and pushing new commits has no effect, check whether `wait: true` is set and a resource in that Kustomization is unhealthy. The fix is either to resolve the unhealthy resource or remove `wait: true` if the health gate is not load-bearing.
+
+Do not iterate on symptoms by pushing more commits before understanding why Flux is not picking them up.
+
+---
+
 ## FluxCD Bootstrap
 
 FluxCD is installed via `gitops/bootstrap/` and pointed at `clusters/on-prem/`.
