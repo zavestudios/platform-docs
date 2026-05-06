@@ -52,6 +52,7 @@ Canonical authorities:
 | Contract changes require compatibility and migration path | `platform-docs` pull request | Documentation gate for compatibility window and migration notes | Contract-breaking change without versioned migration and compatibility updates | `platform-docs` | Hard fail |
 | GitOps remains lifecycle authority for deployment state | Runtime reconciliation boundary | Reconciliation policy and drift detection controls | Out-of-band runtime mutation or unmanaged drift | `gitops` | Alert + gated remediation |
 | kubectl instructions remain human-gated in docs | Documentation pull request | Markdown lint/policy check for manual-step labeling | kubectl instruction missing required `Requires cluster access:` label | `platform-docs` | Hard fail |
+| Kubernetes manifests and Helm-rendered resources must satisfy enforced Kyverno policies before reaching the cluster | `gitops` pull request | `kyverno apply` against versioned policy snapshot in `platform/policies/kyverno/enforce/`; HelmRelease changes rendered via `helm template` before validation | Any violation of an Enforce-mode ClusterPolicy (BigBang-inherited or platform-authored) | `platform-pipelines` + `gitops` | Hard fail |
 
 ---
 
@@ -60,6 +61,7 @@ Canonical authorities:
 - **Tenant/portfolio pull request**: validation before merge in workload repositories.
 - **Any repository pull request**: validation applied to all repositories regardless of category.
 - **Infrastructure/control pull requests**: validation for repositories that can affect shared substrate or governance.
+- **`gitops` pull request**: validation applied to HelmRelease and tenant manifest changes before merge into the GitOps repository.
 - **Runtime reconciliation boundary**: post-merge enforcement at desired-state reconciliation layer.
 - **Documentation pull request**: validation of platform documents and operational guidance.
 
