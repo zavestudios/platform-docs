@@ -219,6 +219,93 @@ Once generators stabilize:
 
 ---
 
+## Formation Observability Capability Materialization
+
+During Formation, observability capability declarations are not self-executing.
+They become real only when GitOps includes the workload and platform resources
+needed for collection.
+
+### Metrics Capability
+
+For a workload declaring:
+
+```yaml
+spec:
+  capabilities:
+    - name: metrics
+```
+
+the Formation GitOps standard is:
+
+1. the tenant workload exposes a Kubernetes `Service` port named `metrics`
+2. the scrape path is `/metrics` unless the platform explicitly documents an
+   exception
+3. `gitops/tenants/{workload}/` contains the monitoring object required by the
+   active platform stack
+4. for the current Prometheus Operator implementation, that object is a
+   `ServiceMonitor`
+
+The `ServiceMonitor` must remain platform-shaped:
+
+- it targets the tenant namespace intentionally
+- it selects the workload `Service` by stable labels
+- it references the named `metrics` port rather than a raw port number
+
+Workload capability declaration without this GitOps materialization is
+conformance debt, not successful capability adoption.
+
+### Tracing Capability
+
+For a workload declaring:
+
+```yaml
+spec:
+  capabilities:
+    - name: tracing
+```
+
+the Formation GitOps standard is:
+
+1. the workload emits OTLP using platform-provided configuration
+2. GitOps publishes the platform-owned in-cluster OTLP receiver path
+3. the receiver is owned by the observability stack and forwards traces to
+   Tempo
+4. tenant manifests do not define direct Tempo ingestion, bespoke collectors,
+   or workload-specific tracing backends
+
+The canonical Formation data path is:
+
+```text
+workload -> Alloy receiver -> Tempo
+```
+
+Required materialization responsibilities:
+
+- platform GitOps defines the receiver service and routing path
+- tenant GitOps injects the receiver endpoint and required OTLP environment
+  variables into workloads that declare `tracing`
+- validation and generators should eventually enforce this automatically
+
+Until the receiver path is published and consumable through GitOps-managed
+configuration, `tracing` remains declared intent rather than completed platform
+behavior.
+
+### Operational Validation
+
+Capability materialization is not complete until the platform can verify it at
+runtime.
+
+Examples:
+
+- `metrics`: Prometheus shows the workload target as discovered and `up`
+- `tracing`: the collector receives workload traces and forwards them to Tempo
+
+This follows `DIAGNOSTIC_MODEL.md`: Git truth, rendered truth, controller
+truth, and runtime truth must align before a capability is considered
+operational.
+
+---
+
 ## Reconciliation Layering
 
 FluxCD reconciliation has three distinct ordering mechanisms. Using the wrong one is a common source of stalls.
