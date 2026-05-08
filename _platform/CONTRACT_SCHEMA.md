@@ -283,6 +283,70 @@ Capability classes:
 v0.1 allows only feature capabilities.
 Structural capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
 
+## Formation v0.1 Observability Capability Semantics
+
+`metrics` and `tracing` are valid feature capabilities in Formation, but their
+declaration is meaningful only when the platform materializes the corresponding
+GitOps and runtime behavior.
+
+Tenants declare observability intent in the contract.
+The platform defines collection mechanics, endpoints, labels, and controllers.
+
+### `metrics`
+
+Declaring:
+
+```yaml
+spec:
+  capabilities:
+    - name: metrics
+```
+
+means the workload is expected to expose Prometheus-format metrics on a
+platform-known endpoint.
+
+Formation expectations:
+
+- the workload exposes a named Kubernetes `Service` port `metrics`
+- the scrape path defaults to `/metrics`
+- GitOps materializes the scrape object required by the active monitoring stack
+- Prometheus discovers the workload through platform-owned selectors, not
+  ad hoc tenant scrape config
+
+Tenants do not author raw Prometheus scrape jobs in workload repositories.
+
+### `tracing`
+
+Declaring:
+
+```yaml
+spec:
+  capabilities:
+    - name: tracing
+```
+
+means the workload is expected to emit OpenTelemetry Protocol (OTLP) traces to
+a platform-owned collector path.
+
+Formation expectations:
+
+- workloads emit OTLP to a platform-owned in-cluster receiver
+- the receiver is platform-owned and forwards traces to the tracing backend
+- workloads must not send traces directly to Tempo or define tenant-specific
+  tracing backends
+- GitOps materializes the required environment variables, service endpoints,
+  and collector wiring
+
+The canonical Formation path is:
+
+```text
+workload -> platform-owned Alloy receiver -> Tempo
+```
+
+The exact receiver service address is a platform implementation detail and must
+be published through GitOps-managed configuration rather than hardcoded by
+tenants.
+
 ---
 
 # Resources Section (Optional)
