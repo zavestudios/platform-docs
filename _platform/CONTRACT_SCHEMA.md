@@ -251,6 +251,52 @@ This determines:
 
 Storage configuration must not appear outside this section.
 
+Formation guidance:
+
+- `spec.persistence` is reserved for backing stores that behave like
+  workload-attached data dependencies consumed through direct application
+  credentials.
+- `postgres` and `mysql` are the canonical relational examples for this
+  surface.
+- `redis` remains an allowed value in Formation v0.1 for compatibility with
+  current platform behavior.
+- This does not establish a general rule that caches, brokers, search systems,
+  or other shared stateful technologies belong under `spec.persistence`.
+
+Stateful technology categories such as message brokers, event streaming
+platforms, and search / analytics stores should be treated as separate platform
+capability families unless the platform explicitly decides they behave like
+workload-owned backing stores.
+
+---
+
+# Stateful Capability Taxonomy (Formation Guidance)
+
+Formation distinguishes between workload-owned persistence and shared
+stateful capabilities.
+
+Decision rule:
+
+- Use `spec.persistence` when the workload needs a primary backing store with
+  direct secret injection, connection policy, and backup / recovery semantics
+  that attach to that workload.
+- Do not add new `spec.persistence.engine` values for every stateful technology
+  category by default.
+- Treat shared systems such as brokers, streaming platforms, and search tiers
+  as separate capability families unless the contract is intentionally expanded
+  to support them.
+
+Examples of stateful capability families that should not be inferred from the
+current `persistence` enum:
+
+- message brokers
+- event streaming platforms
+- search / analytics stores
+- future shared cache tiers
+
+This keeps the persistence surface narrow while preserving a path for bounded
+future expansion.
+
 ---
 
 # Capability Section (Optional)
@@ -281,6 +327,8 @@ Capability classes:
   - queue-consumer
 
 v0.1 allows only feature capabilities.
+Stateful shared-service capability families are not yet part of the supported
+v0.1 workload contract surface.
 Structural capabilities are deferred until role/deployable-unit modeling is introduced in a future schema version.
 
 ## Formation v0.1 Observability Capability Semantics

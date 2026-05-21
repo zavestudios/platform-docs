@@ -333,6 +333,12 @@ Tenants propose new reusable capabilities via POC process:
 - Platform: Approve, implement as `redis` persistence engine
 - Result: All tenants can now use `persistence: engine: redis`
 
+Formation note:
+
+- This Redis example reflects current v0.1 contract compatibility, not a
+  general rule that every future stateful technology category should be added
+  under `spec.persistence.engine`.
+
 **Anti-Pattern**: Platform team guesses what capabilities tenants need without validation.
 
 ---
