@@ -84,6 +84,8 @@ Checks:
 - Runtime supports chosen delivery strategy
 - Exposure type is permitted for the runtime
 - Persistence engine is supported in the environment
+- Stateful technology category is mapped to the correct contract surface
+  (`persistence` vs capability family)
 - Capability combinations are allowed
 - Resource tier fits platform constraints
 - Build strategy is supported for the contract version
@@ -98,6 +100,8 @@ Example failures:
 - Canary delivery on unsupported runtime
 - Public exposure in restricted environment
 - Redis persistence without network policy support
+- RabbitMQ declared as `spec.persistence.engine` without a schema version that
+  supports broker capability families
 - Conflicting capabilities attached
 
 ---
