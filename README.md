@@ -88,6 +88,8 @@ Read this repository like a small canonical handbook, not a wiki.
   Generator semantics and template-driven behavior.
 - **GITOPS_MODEL.md**
   How authoritative desired state is represented and advanced through GitOps.
+- **OBSERVABILITY_MODEL.md**
+  Classification, ownership, and capability materialization rules for logs, metrics, and traces.
 
 ### Execution And Operations
 
