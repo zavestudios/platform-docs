@@ -88,6 +88,8 @@ Read this repository like a small canonical handbook, not a wiki.
   Generator semantics and template-driven behavior.
 - **GITOPS_MODEL.md**
   How authoritative desired state is represented and advanced through GitOps.
+- **OBSERVABILITY_MODEL.md**
+  Classification, ownership, and capability materialization rules for logs, metrics, and traces.
 
 ### Execution And Operations
 
@@ -99,6 +101,8 @@ Read this repository like a small canonical handbook, not a wiki.
   Canonical execution environments, available tools, and where platform operations should run.
 - **GITOPS_MISSING_RESOURCE_RUNBOOK.md**
   Generic runbook for diagnosing GitOps-managed services or workloads that appear absent from the cluster.
+- **GITOPS_STALE_RECONCILIATION_RUNBOOK.md**
+  Generic runbook for diagnosing corrected GitOps inputs that do not converge into a fresh controller action.
 - **PR_WORKFLOW.md**
   Standard pull request workflow and conventions.
 - **RUNBOOK_METHODOLOGY.md**
