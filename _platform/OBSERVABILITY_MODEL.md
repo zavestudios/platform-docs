@@ -197,6 +197,7 @@ capability declarations outrun materialization.
 
 ## See Also
 
+- `observability/OBSERVABILITY_DATA_FLOW.md`
 - `CONTRACT_SCHEMA.md`
 - `GITOPS_MODEL.md`
 - `CONTROL_PLANE_MODEL.md`
