@@ -209,6 +209,8 @@ To improve legibility, prefer the following artifacts:
 - environment-specific command bundles where needed
 - incident summaries that capture manual repair steps
 - inventories for critical shared services
+- diagrams or infographics when a flow, dependency graph, or ownership boundary
+  is easier to understand visually than through prose
 
 Avoid relying on:
 
