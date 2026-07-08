@@ -76,6 +76,22 @@ notification channels such as email, Slack, webhooks, or paging systems.
 
 ## Operator Examples
 
+### Request Investigation Workflow
+
+The canonical operator path starts from a user-visible request or symptom and
+uses Grafana as the primary interface:
+
+1. Find workload logs in Loki for the affected namespace, workload, and time
+   window.
+2. Check Prometheus metrics and target health for the workload and the
+   relevant collector/backend components.
+3. Inspect a Tempo trace for the same request class when tracing is enabled.
+4. Check Grafana or Alertmanager alert visibility for related firing alerts or
+   notification state.
+
+Direct cluster shell access is a fallback diagnostic path, not the standard
+operator workflow.
+
 ### Mia Trace Example
 
 1. Mia receives a WhatsApp message.
