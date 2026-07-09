@@ -120,6 +120,42 @@ platform policy requires it.
 Each agent workstation/session should have a reliable way to use its assigned
 GitHub identity without ad hoc token selection.
 
+Before git or GitHub work in a repository, perform identity preflight for the
+actor doing the work.
+
+Codex:
+
+```bash
+gh auth switch --user codex-zavestudios
+git config user.name "Codex ZaveStudios"
+git config user.email "codex-zavestudios@users.noreply.github.com"
+```
+
+Claude Code:
+
+```bash
+gh auth switch --user claude-zavestudios
+git config user.name "Claude ZaveStudios"
+git config user.email "claude-zavestudios@users.noreply.github.com"
+```
+
+Human owner:
+
+```bash
+gh auth switch --user eckslopez
+git config user.name "Xavier Lopez"
+git config user.email "ecks910@yahoo.com"
+```
+
+Verify before committing, pushing, opening pull requests, commenting, or
+reviewing:
+
+```bash
+gh auth status
+git config user.name
+git config user.email
+```
+
 Expected local `gh` shape:
 
 ```bash
