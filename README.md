@@ -36,7 +36,8 @@ Read this repository like a small canonical handbook, not a wiki.
 3. `CONTROL_PLANE_MODEL.md`
 4. `DEVELOPER_EXPERIENCE.md`
 5. `EXECUTION_ENVIRONMENTS.md`
-6. `PR_WORKFLOW.md`
+6. `AGENT_IDENTITY_MODEL.md`
+7. `PR_WORKFLOW.md`
 
 ### Gap Analysis
 
