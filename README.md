@@ -99,6 +99,8 @@ Read this repository like a small canonical handbook, not a wiki.
   User-journey appendix for developer workflows and DX gap analysis.
 - **EXECUTION_ENVIRONMENTS.md**
   Canonical execution environments, available tools, and where platform operations should run.
+- **AGENT_IDENTITY_MODEL.md**
+  Human and agent GitHub identity, attribution, review, and fallback rules.
 - **GITOPS_MISSING_RESOURCE_RUNBOOK.md**
   Generic runbook for diagnosing GitOps-managed services or workloads that appear absent from the cluster.
 - **GITOPS_STALE_RECONCILIATION_RUNBOOK.md**
