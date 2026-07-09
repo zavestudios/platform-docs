@@ -14,6 +14,7 @@ Define the standard change path for governed repositories.
 
 **Read next**
 
+- `AGENT_IDENTITY_MODEL.md` for human and agent attribution rules
 - `OPERATING_MODEL.md` for cross-repo change expectations
 - `RUNBOOK_METHODOLOGY.md` for converting incident findings into follow-up work
 - `DEVELOPER_EXPERIENCE.md` for local branch and workspace conventions
@@ -65,15 +66,16 @@ Include:
 
 ## Commit Message Standards
 
-All commits should include Claude Code co-authorship footer:
+Commit authorship must follow `AGENT_IDENTITY_MODEL.md`.
 
-```
-Descriptive commit message
+Use the Git identity of the actor that authored the change:
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+- `eckslopez` for human-authored work
+- `codex-zavestudios` for Codex-authored work
+- `claude-zavestudios` for Claude Code-authored work
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
-```
+Agent-generated commits may include a concise generation footer, but the Git
+author and footer must not contradict each other.
 
 ## Why This Workflow
 
@@ -95,6 +97,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ## See Also
 
 - `OPERATING_MODEL.md`
+- `AGENT_IDENTITY_MODEL.md`
 - `RUNBOOK_METHODOLOGY.md`
 - `DEVELOPER_EXPERIENCE.md`
 - `ENFORCEMENT_MATRIX.md`
