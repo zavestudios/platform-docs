@@ -191,7 +191,7 @@ kubectl get nodes
 kubectl get pods -A
 
 # View workload logs
-kubectl logs -n mia deploy/mia-app
+kubectl logs -n <workload-namespace> deploy/<workload-deployment>
 
 # Flux reconciliation
 flux reconcile source git flux-system
@@ -405,11 +405,11 @@ vault kv get secret/platform/storage/pg/admin
 kubectl exec -n vault vault-0 -- vault kv get secret/platform/storage/pg/admin
 
 # Debug running workload
-kubectl exec -n mia deploy/mia-app -it -- bash
+kubectl exec -n <workload-namespace> deploy/<workload-deployment> -it -- bash
 # Inside container: inspect env, check files, run diagnostics
 
 # Break-glass kubectl operations
-kubectl patch deployment mia-app -n mia --type='json' -p='[{"op": "replace", "path": "/spec/replicas", "value":0}]'
+kubectl patch deployment <workload-deployment> -n <workload-namespace> --type='json' -p='[{"op": "replace", "path": "/spec/replicas", "value":0}]'
 ```
 
 ---
@@ -524,14 +524,14 @@ gh workflow run provision-tenant.yml \
 **❌ Wrong Environment (Workstation):**
 ```bash
 # No kubectl on workstation
-kubectl logs -n mia deploy/mia-app
+kubectl logs -n <workload-namespace> deploy/<workload-deployment>
 # Error: kubectl: command not found
 ```
 
 **✅ Right Environment (Bastion):**
 ```bash
 ssh bastion.internal
-kubectl logs -n mia deploy/mia-app
+kubectl logs -n <workload-namespace> deploy/<workload-deployment>
 ```
 
 ---

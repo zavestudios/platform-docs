@@ -27,14 +27,14 @@ Instrumented services push trace spans using OTLP.
 instrumented service -> OTLP -> Alloy receiver -> Tempo -> Grafana
 ```
 
-In the current concrete example:
+In a concrete workload example:
 
 ```text
-Mia -> OTLP -> Alloy receiver -> Tempo -> Grafana
+instrumented workload -> OTLP -> Alloy receiver -> Tempo -> Grafana
 ```
 
-Mia emits spans, Alloy receives and forwards them, Tempo stores them, and
-Grafana queries Tempo with TraceQL or trace search.
+The workload emits spans, Alloy receives and forwards them, Tempo stores them,
+and Grafana queries Tempo with TraceQL or trace search.
 
 Prometheus is not in the trace ingestion path.
 
@@ -92,11 +92,14 @@ uses Grafana as the primary interface:
 Direct cluster shell access is a fallback diagnostic path, not the standard
 operator workflow.
 
-### Mia Trace Example
+### Historical Mia v1 Trace Example
 
-1. Mia receives a WhatsApp message.
-2. Mia creates trace spans.
-3. Mia pushes spans over OTLP to Alloy.
+Mia v1 is retired. This example remains as historical validation evidence for
+the tracing path; it is not the current reference workload.
+
+1. Mia v1 receives a WhatsApp message.
+2. Mia v1 creates trace spans.
+3. Mia v1 pushes spans over OTLP to Alloy.
 4. Alloy forwards spans to Tempo.
 5. Tempo stores the trace.
 6. Grafana queries Tempo so an operator can inspect the request.
@@ -111,16 +114,16 @@ operator workflow.
 
 ## Current Platform Notes
 
-The Mia trace path has been verified end to end:
+The retired Mia v1 trace path was verified end to end:
 
 ```text
-WhatsApp user action -> Mia/OpenClaw -> OTEL/OTLP -> Alloy receiver -> Tempo -> Grafana
+WhatsApp user action -> Mia v1/OpenClaw -> OTEL/OTLP -> Alloy receiver -> Tempo -> Grafana
 ```
 
-The Mia log discovery path has also been verified from Grafana:
+The retired Mia v1 log discovery path was also verified from Grafana:
 
 ```text
-WhatsApp user action -> Mia/OpenClaw logs -> Loki -> Grafana
+WhatsApp user action -> Mia v1/OpenClaw logs -> Loki -> Grafana
 ```
 
 Prometheus visibility for the core observability stack has been verified.

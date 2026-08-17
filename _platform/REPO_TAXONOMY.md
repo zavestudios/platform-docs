@@ -168,6 +168,7 @@ This table is the canonical in-scope repository set for governed platform analys
 - deploys_runtime: Yes (runs autonomous-agent runtime instances)
 - provides_reusable_capability: Yes (template/runtime for autonomous agent instances)
 - consumes_shared_workflows: Yes (must use platform-governed validation and delivery paths)
+- Boundary: autonomous-agent does not bypass `llm-platform`, own shared model-provider policy, subsume `engineering-agent` for interactive coding, or replace `oracle` for durable asynchronous execution
 
 **`engineering-agent`**
 - Self-hosted, persistent OpenCode engineering-agent service for operator-driven engineering work
