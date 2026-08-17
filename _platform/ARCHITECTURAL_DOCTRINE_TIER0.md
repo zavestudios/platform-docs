@@ -164,3 +164,4 @@ The constrained path must always be faster, safer, and easier than deviation.
 - `CONTROL_PLANE_MODEL.md`
 - `LIFECYCLE_MODEL.md`
 - `DIAGNOSTIC_MODEL.md`
+- `PLATFORM_THESIS.md`
