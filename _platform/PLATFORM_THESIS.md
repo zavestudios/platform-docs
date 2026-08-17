@@ -73,7 +73,7 @@ This thesis is the "why."
 
 `OPERATING_MODEL.md` is the "how we operate today."
 
-When those documents appear to conflict, the thesis is the tiebreaker.
+The thesis guides interpretation and prioritization, but Tier 0 remains the constraint boundary when there is a conflict.
 
 ---
 

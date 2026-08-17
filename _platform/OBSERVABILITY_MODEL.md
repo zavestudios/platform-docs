@@ -170,7 +170,9 @@ Do not force the same first validation workload to prove every signal type.
 
 Use the workload that best matches the capability being validated:
 
-- `mia` is the current tracing validation workload
+- `mia` v1 was the initial tracing validation workload; it is now retired and
+  should be treated as historical validation evidence, not the current
+  reference workload
 - `rigoberta` is the current metrics materialization example because it already
   uses the Prometheus-style `ServiceMonitor` path
 

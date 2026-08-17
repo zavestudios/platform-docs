@@ -116,6 +116,8 @@ This table is the canonical in-scope repository set for governed platform analys
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
 | `platform-docs` | control-plane | No | No | Yes | No |
 | `airflow` | platform-service | Yes | No | Yes | No |
+| `autonomous-agent` | platform-service | Yes | No | Yes | Yes |
+| `engineering-agent` | platform-service | Yes | No | Yes | Yes |
 | `image-factory` | platform-service | No | No | Yes | Yes |
 | `llm-platform` | platform-service | Possibly | No | Yes | Possibly |
 | `pg` | platform-service | No | No | Yes | Possibly |
@@ -125,7 +127,6 @@ This table is the canonical in-scope repository set for governed platform analys
 | `gitops` | infrastructure | No | Yes | No | Possibly |
 | `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
 | `listings-ingest` | tenant | Yes | No | No | Yes |
-| `mia` | tenant | Yes | No | No | Yes |
 | `oracle` | tenant | Yes | No | No | Yes |
 | `panchito` | tenant | Yes | No | No | Yes |
 | `rigoberta` | tenant | Yes | No | No | Yes |
@@ -153,6 +154,35 @@ This table is the canonical in-scope repository set for governed platform analys
 - Classified as `platform-service` (provides reusable orchestration capability)
 - deploys_runtime: Yes (runs scheduler, webserver, triggerer in platform namespace)
 - provides_reusable_capability: Yes (DAG orchestration for tenant workloads)
+
+**`autonomous-agent`**
+- OpenClaw-based autonomous assistant/orchestrator capability for persistent, goal-directed, event-directed, or scheduled work
+- Provides a reusable platform capability from which named agent instances and personas may be deployed
+- Replaces the former `mia` tenant classification; `Mia` may remain an instance/persona name, but the repository identity is capability-based
+- Old `mia` v1 WhatsApp-based runtime is retired rather than migrated because its gateway identity depended on a brittle external phone/account
+- Consumes `llm-platform` as the target shared model-access gateway and must not own ZaveStudios-wide provider routing, credentials, quota, policy, profiles, or tracing directly
+- May coordinate tools, workflows, and other platform capabilities when policy permits
+- May use `oracle` for durable asynchronous AI execution when a concrete use case requires retries, leasing, restart recovery, or long-running work
+- Must delegate interactive software-engineering execution to `engineering-agent` rather than becoming another coding agent
+- Classified as `platform-service` (provides reusable autonomous-agent capability rather than a tenant-specific workload)
+- deploys_runtime: Yes (runs autonomous-agent runtime instances)
+- provides_reusable_capability: Yes (template/runtime for autonomous agent instances)
+- consumes_shared_workflows: Yes (must use platform-governed validation and delivery paths)
+- Boundary: autonomous-agent does not bypass `llm-platform`, own shared model-provider policy, subsume `engineering-agent` for interactive coding, or replace `oracle` for durable asynchronous execution
+
+**`engineering-agent`**
+- Self-hosted, persistent OpenCode engineering-agent service for operator-driven engineering work
+- Provides a reusable platform capability for supervised source editing, validation, branch/PR creation, and resumable engineering sessions
+- Deployed as a Kubernetes-managed runtime with persistent OpenCode session/history state
+- Uses isolated, disposable task workspaces for repository checkouts and edits
+- Consumes `llm-platform` as the shared model-access gateway and must not embed provider routing, credentials, quota, policy, or model-access governance directly
+- GitHub remains the durable source of truth for branches, commits, pull requests, reviews, and protected-branch controls
+- CI/CD remains the authoritative build, test, preview-environment, and production delivery path
+- Classified as `platform-service` (provides reusable engineering-agent capability rather than tenant-specific product behavior)
+- deploys_runtime: Yes (runs OpenCode service and persistent state in the platform runtime)
+- provides_reusable_capability: Yes (shared supervised engineering-agent capability)
+- consumes_shared_workflows: Yes (must use platform-governed validation and delivery paths)
+- Boundary: OpenCode does not merge protected branches, bypass `llm-platform`, replace CI/CD, or subsume `autonomous-agent`/OpenClaw
 
 **`zave-cli`**
 - Workload generator CLI tool
@@ -210,13 +240,6 @@ Governance implication:
 
 - Shared runtime platform services are still governed through platform-owned GitOps and control-plane rules.
 - They are not tenant workloads and should not be modeled as independent business services.
-
-### Tenant Status Notes
-
-**`mia`**
-- OpenClaw AI assistant workload (active tenant repository)
-- Deploys as a platform-governed tenant via shared workflows and GitOps
-- First runtime verification may be tracked separately from repository onboarding status
 
 ### Portfolio Contract Governance
 
