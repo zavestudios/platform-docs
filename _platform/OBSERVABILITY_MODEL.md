@@ -1,28 +1,5 @@
 # ZaveStudios — Observability Model v0.1
 
-## Chapter Guide
-
-**Purpose**
-
-Define how observability is classified, owned, and materialized across the
-platform during Formation.
-
-**Read this when**
-
-- deciding whether observability behavior belongs in a workload, GitOps, or
-  shared platform runtime
-- reviewing `metrics` and `tracing` capability declarations
-- defining rollout order for logs, metrics, and traces across governed
-  workloads
-
-**Read next**
-
-- `CONTRACT_SCHEMA.md` for capability semantics
-- `GITOPS_MODEL.md` for Formation materialization expectations
-- `CONTROL_PLANE_MODEL.md` for authority boundaries
-
----
-
 ## Classification
 
 Observability is a **hybrid platform concern**:
@@ -195,13 +172,3 @@ Recommended Formation sequence:
 This keeps doctrine aligned with live platform behavior instead of letting
 capability declarations outrun materialization.
 
----
-
-## See Also
-
-- `observability/OBSERVABILITY_DATA_FLOW.md`
-- `CONTRACT_SCHEMA.md`
-- `GITOPS_MODEL.md`
-- `CONTROL_PLANE_MODEL.md`
-- `DIAGNOSTIC_MODEL.md`
-- `OPERATING_MODEL.md`

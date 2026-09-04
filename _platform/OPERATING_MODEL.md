@@ -1,24 +1,5 @@
 # ZaveStudios — Platform Operating Model v0.1.5 (Formation Phase)
 
-## Chapter Guide
-
-**Purpose**
-
-Describe how the platform currently operates across repositories during the
-formation phase.
-
-**Read this when**
-
-- determining which repository should carry a change
-- deciding whether a behavior is current-state policy or target-state intent
-- reviewing cross-repository impact during platform changes
-
-**Read next**
-
-- `CONTROL_PLANE_MODEL.md` for authority boundaries
-- `EXECUTION_ENVIRONMENTS.md` for where operations should run
-- `PR_WORKFLOW.md` for how changes should move through review
-
 ## Phase Definition
 
 ZaveStudios is currently in **Platform Formation**, not Platform Operation.
@@ -223,10 +204,6 @@ Research shows platforms without dedicated DX ownership tend toward:
 
 The DX Owner ensures the platform serves tenant needs, not platform team preferences.
 
-**Measurement Responsibility:**
-
-See **MEASUREMENT_MODEL.md** for metrics this role tracks and reports.
-
 ---
 
 # Platform-Tenant Collaboration Model
@@ -319,7 +296,7 @@ Tenants submit friction points to the DX PM:
 
 Tenants propose new reusable capabilities via POC process:
 
-1. **POC Creation**: Tenant builds prototype in POC repository following POC_GOVERNANCE.md
+1. **POC Creation**: Tenant builds prototype in a POC repository
 2. **System Design Doc**: Document alternatives, trade-offs, recommendation
 3. **DX PM Review**: Assess demand (is this a common need?), feasibility, ROI
 4. **Platform Decision**: Approve for graduation / Defer / Reject with rationale
@@ -497,15 +474,6 @@ When collaboration works:
 
 ---
 
-## Related Documentation
-
-- **MEASUREMENT_MODEL.md** — Metrics for tracking platform-tenant collaboration health
-- **POC_GOVERNANCE.md** — Structured process for capability requests
-- **CONTRACT_SCHEMA.md** — Bounded autonomy within contract fields
-- **DEVELOPER_EXPERIENCE.md** — User journeys that collaboration must optimize
-
----
-
 # Strategic Interpretation
 
 ZaveStudios is transitioning from:
@@ -528,12 +496,3 @@ Success depends less on adding features and more on:
 - elevating GitOps to lifecycle authority
 - ensuring the reference path is always the fastest path  
 
----
-
-## See Also
-
-- `ARCHITECTURAL_DOCTRINE_TIER0.md`
-- `CONTROL_PLANE_MODEL.md`
-- `REPO_TAXONOMY.md`
-- `EXECUTION_ENVIRONMENTS.md`
-- `PR_WORKFLOW.md`

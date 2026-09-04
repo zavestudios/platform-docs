@@ -1,26 +1,7 @@
 # ZaveStudios — Generator Model v0.1
 
-This document defines how validated workload contracts are transformed into concrete platform artifacts.
-
-## Chapter Guide
-
-**Purpose**
-
-Define how validated workload intent is deterministically transformed into
+How validated workload contracts are deterministically transformed into
 platform artifacts.
-
-**Read this when**
-
-- reviewing how scaffolding or generated output should behave
-- deciding whether a proposed generation behavior is contract-derived or
-  invented
-- tracing changes from contract to repository or GitOps artifacts
-
-**Read next**
-
-- `CONTRACT_SCHEMA.md` for the input surface
-- `CONTRACT_VALIDATION.md` for the gate ahead of generation
-- `GITOPS_MODEL.md` for where generated state becomes runtime authority
 
 Generators are the mechanism by which the platform materializes intent into execution.
 
@@ -240,23 +221,3 @@ Generators must fail loudly, not degrade gracefully.
 
 Silent partial generation causes drift and must be prevented.
 
----
-
-# Strategic Role
-
-Generators convert the platform from a collection of tools into a workload compiler.
-
-The contract becomes the source code.  
-Generators become the compiler.  
-GitOps becomes the runtime scheduler.
-
-When generators are stable, the platform becomes predictable, scalable, and safe.
-
----
-
-## See Also
-
-- `CONTRACT_SCHEMA.md`
-- `CONTRACT_VALIDATION.md`
-- `GITOPS_MODEL.md`
-- `DEVELOPER_EXPERIENCE.md`
