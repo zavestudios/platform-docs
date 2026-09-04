@@ -4,8 +4,6 @@ This repository is the authoritative source of truth for the ZaveStudios platfor
 
 It defines how the platform is structured, how repositories interact, and how change is introduced safely across the system. It does not contain application code or environment-specific secrets.
 
-For local multi-repository analysis in this workspace, the current working set is defined by `/path/to/my/vscode.code-workspace`. That file is an operational workspace definition, not a governance authority.
-
 ## Scope
 
 This repository governs:
@@ -138,6 +136,11 @@ Read this repository like a small canonical handbook, not a wiki.
   Operational playbook, templates, and recurring review flow for friction handling.
 - **AUDIT_PROGRAM.md**
   Audit expectations for platform behavior and evidence collection.
+
+### Audit Evidence
+
+- **audits/2026-09-03-pruning-closure.md**
+  Organization-wide repository hygiene baseline at the close of the pruning phase.
 
 ## Precedence
 
