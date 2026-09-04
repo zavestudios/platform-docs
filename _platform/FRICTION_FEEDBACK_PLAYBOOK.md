@@ -110,11 +110,11 @@ From `MEASUREMENT_MODEL.md`:
 
 | Metric | Target | Measurement Method |
 |--------|--------|-------------------|
-| **Friction Point Submission Volume** | Track trend (should increase initially as awareness grows, then decrease as friction resolves) | Count of GitHub Discussions |
-| **Resolution Rate** | ≥70% closed within quarter | Closed Discussions / Total Discussions |
+| **Friction Point Submission Volume** | Track trend (should increase initially as awareness grows, then decrease as friction resolves) | Count of friction Issues |
+| **Resolution Rate** | ≥70% closed within quarter | Closed friction Issues / Total friction Issues |
 | **Average Resolution Time** | Quick fixes: <1 week, Roadmap items: variable | Time from submission to "Resolved" label |
 | **High-Impact Friction Resolved** | 100% addressed (resolved or documented limitation) | Count of "impact: high" + "status: resolved" or "status: known-limitation" |
-| **Friction-to-Roadmap Conversion** | ≥50% of roadmap items driven by friction reports | Count of Issues created from Discussions |
+| **Friction-to-Roadmap Conversion** | ≥50% of roadmap items driven by friction reports | Count of friction Issues added to the Command Center |
 
 **Dashboard**: DX PM maintains public dashboard showing these metrics
 
@@ -197,7 +197,7 @@ documentation gap
 
 **For Tenants**:
 
-1. Hit a friction point? Submit to GitHub Discussions → "Friction Points"
+1. Hit a friction point? Open a `platform-docs` Issue with a `[Friction]` title prefix
 2. Use template, be specific about impact and frequency
 3. Upvote others' friction points you also experience
 4. Watch for DX PM triage response (target: <1 week)
@@ -224,9 +224,9 @@ documentation gap
 
 **Initial Setup** (Formation Phase):
 
-- [ ] Enable GitHub Discussions on `platform-docs` repository
-- [ ] Create "Friction Points" discussion category
-- [ ] Pin friction point submission template as guidance
+- [ ] Add a friction issue template to `platform-docs`
+- [ ] Create the friction, impact, and status labels used by this playbook
+- [ ] Add actionable friction Issues to the Command Center
 - [ ] Announce feedback mechanism to all tenant teams
 - [ ] Add friction feedback link to platform documentation
 - [ ] Schedule weekly DX PM triage time
@@ -263,7 +263,7 @@ workload with persistence. Adding to roadmap for generator automation."
 docker-compose from contract
 
 **Week 10**: PR merged, DX PM comments "Resolved in PR #456, now `zave init`
-generates docker-compose automatically", closes Discussion with
+generates docker-compose automatically", closes the Issue with
 `status: resolved`
 
 **Quarter End**: Included in friction report: "Resolved: Database setup

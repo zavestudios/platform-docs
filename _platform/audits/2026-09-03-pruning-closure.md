@@ -75,6 +75,8 @@ remain available to GitHub.
 
 - Removed a placeholder machine-specific workspace path from the repository
   overview.
+- Replaced the never-enabled GitHub Discussions friction channel with the
+  established Issues and Command Center path.
 - Repository names and GitHub links align with the current taxonomy. Historical
   examples explicitly labeled as retired remain valid evidence and were retained.
 

@@ -20,3 +20,5 @@ jobs:
   link-check:
     name: Check Documentation Links
     uses: zavestudios/platform-pipelines/.github/workflows/link-check.yml@c0159f042136961310d5dce6ebe780805f7e9781
+    with:
+      lychee_args: "--verbose --no-progress --config .github/lychee.toml"

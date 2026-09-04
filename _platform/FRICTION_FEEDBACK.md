@@ -91,24 +91,24 @@ A **friction point** is any unnecessary difficulty in:
 
 ## Submission Channels
 
-### Primary Channel: GitHub Discussions (Recommended)
+### Primary Channel: GitHub Issues (Recommended)
 
-**Location**: `platform-docs` repository → Discussions tab → "Friction Points" category
+**Location**: `platform-docs` repository → Issues
 
-**Why GitHub Discussions**:
+**Why GitHub Issues**:
 - Visible to all tenant teams (avoid duplicate reports)
 - Searchable and linkable
-- Allows voting/reactions (measure demand)
-- Can be converted to Issues when actionable
+- Supports labels, assignment, and reactions
+- Can be added directly to the Command Center when actionable
 - Preserves history and context
 
 **How to Submit**:
 
-1. Navigate to: https://github.com/zavestudios/platform-docs/discussions
-2. Click "New discussion"
-3. Select category: "Friction Points"
-4. Fill out template (see below)
-5. Submit
+1. Navigate to the `platform-docs` Issues tab.
+2. Click "New issue".
+3. Prefix the title with `[Friction]`.
+4. Fill out the template below.
+5. Submit the issue.
 
 **Template**:
 
@@ -144,7 +144,7 @@ A **friction point** is any unnecessary difficulty in:
 
 **How**: Email, Slack DM, or office hours
 
-**DX PM Responsibility**: Convert to GitHub Discussion (anonymized if needed) for tracking
+**DX PM Responsibility**: Create a GitHub Issue (anonymized if needed) for tracking
 
 ---
 
@@ -167,7 +167,7 @@ A **friction point** is any unnecessary difficulty in:
    - **Low**: Rare occurrence, workaround exists
 
 3. **Measure demand**:
-   - Count upvotes/reactions on GitHub Discussion
+   - Count reactions on the GitHub Issue
    - Track duplicate reports (multiple teams hit same friction)
 
 4. **Assign resolution category**:
@@ -196,10 +196,10 @@ A **friction point** is any unnecessary difficulty in:
 
 **Process**:
 1. DX PM or platform team member creates PR
-2. Link PR in GitHub Discussion
+2. Link PR in the GitHub Issue
 3. Merge PR
-4. Comment on Discussion: "Resolved in PR #123"
-5. Close Discussion with "Resolved" label
+4. Comment on the Issue: "Resolved in PR #123"
+5. Close the Issue with the `status: resolved` label
 6. Add to changelog: "Fixed friction: [description]"
 
 **Target Resolution Time**: <1 week from triage
@@ -214,18 +214,18 @@ A **friction point** is any unnecessary difficulty in:
 - Capability additions (e.g., "Support Redis persistence engine")
 
 **Process**:
-1. DX PM converts Discussion to GitHub Issue in relevant repository
+1. DX PM transfers the Issue to the repository that owns the implementation
 2. Add to platform roadmap backlog
 3. Prioritize based on:
    - Impact (high/medium/low)
    - Demand (# of upvotes, duplicate reports)
    - Strategic alignment (Formation exit criteria)
    - Effort estimate (quick wins vs long projects)
-4. Comment on Discussion with roadmap decision:
+4. Comment on the Issue with the roadmap decision:
    - "Added to roadmap for [timeframe]" or
    - "Deferred until post-Formation due to [reason]"
-5. Link Issue to Discussion for tracking
-6. When implemented, close Discussion with "Resolved" label
+5. Add the Issue to the Command Center for tracking
+6. When implemented, close the Issue with the `status: resolved` label
 
 **Target Resolution Time**: Variable (prioritized quarterly)
 
@@ -239,10 +239,10 @@ A **friction point** is any unnecessary difficulty in:
 - "Must wait for managed database provisioning" (external dependency)
 
 **Process**:
-1. Comment on Discussion explaining limitation and rationale
+1. Comment on the Issue explaining the limitation and rationale
 2. Add label: `status: known-limitation`
 3. Document workaround if available
-4. Keep Discussion open for visibility
+4. Keep the Issue open for visibility
 5. If limitation will be resolved post-Formation, note timeline
 
 **Transparency**: Known limitations should be publicly visible, not hidden
@@ -261,7 +261,7 @@ A **friction point** is any unnecessary difficulty in:
 2. Add label: `status: wont-fix`
 3. Provide context on architectural rationale
 4. Suggest alternative if possible
-5. Close Discussion
+5. Close the Issue
 
 **Transparency**: Respectfully explain constraints, don't dismiss
 
@@ -353,11 +353,11 @@ From MEASUREMENT_MODEL.md:
 
 | Metric | Target | Measurement Method |
 |--------|--------|-------------------|
-| **Friction Point Submission Volume** | Track trend (should increase initially as awareness grows, then decrease as friction resolves) | Count of GitHub Discussions |
-| **Resolution Rate** | ≥70% closed within quarter | Closed Discussions / Total Discussions |
+| **Friction Point Submission Volume** | Track trend (should increase initially as awareness grows, then decrease as friction resolves) | Count of friction Issues |
+| **Resolution Rate** | ≥70% closed within quarter | Closed friction Issues / Total friction Issues |
 | **Average Resolution Time** | Quick fixes: <1 week, Roadmap items: variable | Time from submission to "Resolved" label |
 | **High-Impact Friction Resolved** | 100% addressed (resolved or documented limitation) | Count of "impact: high" + "status: resolved" or "status: known-limitation" |
-| **Friction-to-Roadmap Conversion** | ≥50% of roadmap items driven by friction reports | Count of Issues created from Discussions |
+| **Friction-to-Roadmap Conversion** | ≥50% of roadmap items driven by friction reports | Count of friction Issues added to the Command Center |
 
 **Dashboard**: DX PM maintains public dashboard showing these metrics
 
