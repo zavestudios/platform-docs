@@ -1,23 +1,5 @@
 # ZaveStudios — Tier 0 Architectural Doctrine
 
-## Chapter Guide
-
-**Purpose**
-
-Define the non-negotiable architectural invariants for the platform.
-
-**Read this when**
-
-- deciding whether a proposed platform change is allowed in principle
-- checking whether a lower-order document or implementation has crossed a hard boundary
-- performing gap analysis against the platform's intended identity
-
-**Read next**
-
-- `OPERATING_MODEL.md` for how these invariants are implemented across repositories
-- `CONTROL_PLANE_MODEL.md` for where authority resides at runtime
-- `DIAGNOSTIC_MODEL.md` for how to inspect gaps when reality diverges from doctrine
-
 ## 1. Identity
 
 ZaveStudios is a reference implementation of an opinionated Internal Developer Platform (IDP) that reduces infrastructure decisions to a bounded declarative contract while guaranteeing delivery, governance, and safe evolution.
@@ -86,6 +68,17 @@ Variance is constrained through:
 
 The contract is treated as a product API.
 
+These mechanisms compose into a workload compiler:
+
+- the contract is the source code
+- generators are the compiler
+- GitOps is the runtime scheduler
+
+Every downstream system — repository scaffolding, pipeline generation, GitOps
+composition, runtime configuration, governance enforcement — must derive from
+the contract. If a behavior cannot be derived from the contract, it should not
+exist in the platform.
+
 ---
 
 ## 6. Minimal Workload Principle
@@ -127,21 +120,6 @@ Environment-specific access mechanics are allowed only when they are:
 - Replaceable without changing repository structure or playbook/workload logic.
 - Consistent with platform security controls and host identity verification.
 
-**AI Workload Portability:**
-
-The platform targets **CNCF Kubernetes AI Conformance** certification to ensure AI/ML workloads remain portable across conformant infrastructure environments.
-
-CNCF AI Conformance standardizes GPU integration, volume handling, job-level networking, and framework support requirements. This guarantees that tenants declaring GPU resource tiers or AI capability modules receive consistent behavior across all platform environments that support those tiers.
-
-Portability for AI workloads means:
-
-- GPU allocation is declared via contract resource tiers, not environment-specific device requests
-- AI frameworks operate using standard Kubernetes APIs, not vendor-specific extensions
-- Model training and inference workloads can migrate between conformant clusters without code changes
-- Infrastructure teams can upgrade or replace GPU hardware without tenant workload modifications
-
-Infrastructure conformance is platform-owned. Tenants declare GPU resource requirements in contracts; the platform ensures conformant execution across certified environments.
-
 ---
 
 ## 8. Measurable Leverage
@@ -156,12 +134,3 @@ ZaveStudios creates leverage by:
 
 The constrained path must always be faster, safer, and easier than deviation.
 
----
-
-## See Also
-
-- `OPERATING_MODEL.md`
-- `CONTROL_PLANE_MODEL.md`
-- `LIFECYCLE_MODEL.md`
-- `DIAGNOSTIC_MODEL.md`
-- `PLATFORM_THESIS.md`

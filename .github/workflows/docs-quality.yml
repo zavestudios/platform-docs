@@ -21,4 +21,10 @@ jobs:
     name: Check Documentation Links
     uses: zavestudios/platform-pipelines/.github/workflows/link-check.yml@c0159f042136961310d5dce6ebe780805f7e9781
     with:
+      # Pass a directory, not a glob. The shared workflow interpolates
+      # markdown_globs into the action's args unquoted, so the default
+      # "**/*.md" is expanded by the shell without globstar and collapses
+      # to "*/*.md" — one directory level only. That scope missed README.md
+      # and _platform/observability/ entirely.
+      markdown_globs: "."
       lychee_args: "--verbose --no-progress --config .github/lychee.toml"

@@ -1,24 +1,7 @@
 # ZaveStudios — Admission Policy Model v0.1
 
-This document defines how Kyverno admission policies are authored, organized, and tested on the ZaveStudios platform.
-
-## Chapter Guide
-
-**Purpose**
-
-Establish the two-layer pattern for admission control so that platform defaults are set at admission without requiring charts or workload authors to know about them.
-
-**Read this when**
-
-- authoring a new Kyverno policy
-- a workload is blocked by an admission policy at deploy time
-- deciding whether a requirement belongs in a policy or in a chart value
-- writing Kyverno tests for the CI pipeline
-
-**Read next**
-
-- `ENFORCEMENT_MATRIX.md` for where policies sit in the enforcement stack
-- `GITOPS_MODEL.md` for how policies are reconciled to the cluster
+The two-layer pattern for admission control: platform defaults are set at
+admission, so charts and workload authors do not need to know they exist.
 
 ---
 
@@ -111,10 +94,3 @@ When writing a new policy:
 5. Add the file to `platform/policies/kyverno/kustomization.yaml`.
 6. Write a `kyverno test` case that covers at least one passing and one failing resource.
 
----
-
-## Related Documentation
-
-- `ENFORCEMENT_MATRIX.md` — maps platform rules to enforcement points including Kyverno policies
-- `GITOPS_MODEL.md` — describes how platform policies are reconciled to the cluster
-- `DIAGNOSTIC_MODEL.md` — gap-analysis lens for rendered vs live state
