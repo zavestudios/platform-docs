@@ -7,7 +7,7 @@ and workload GitOps planes, and how that split maps to FluxCD and ArgoCD.
 
 ## GitOps Plane Authority
 
-Per `CONTROL_PLANE_MODEL.md`, the GitOps Plane is the **State Authority** layer.
+Per [`CONTROL_PLANE_MODEL.md`](CONTROL_PLANE_MODEL.md), the GitOps Plane is the **State Authority** layer.
 
 Git is the operational control plane. All runtime state must be representable in Git.
 
@@ -132,7 +132,7 @@ argocd app set {workload-name} --self-heal false
 argocd app set {workload-name} --self-heal true
 ```
 
-This aligns with `CONTROL_PLANE_MODEL.md`: "kubectl is allowed only for emergency mitigation; all changes must be backported to Git immediately."
+This aligns with [`CONTROL_PLANE_MODEL.md`](CONTROL_PLANE_MODEL.md): "kubectl is allowed only for emergency mitigation; all changes must be backported to Git immediately."
 
 ---
 
@@ -280,7 +280,7 @@ Examples:
 - `metrics`: Prometheus shows the workload target as discovered and `up`
 - `tracing`: the collector receives workload traces and forwards them to Tempo
 
-This follows `DIAGNOSTIC_MODEL.md`: Git truth, rendered truth, controller
+This follows [`DIAGNOSTIC_MODEL.md`](DIAGNOSTIC_MODEL.md): Git truth, rendered truth, controller
 truth, and runtime truth must align before a capability is considered
 operational.
 

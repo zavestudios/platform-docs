@@ -10,7 +10,7 @@ If the contract defines *what* the tenant wants, generators define *how* the pla
 Canonical contract reference:
 
 - Generators consume
-  `CONTRACT_SCHEMA.md` → `Canonical Workload Contract Definition`.
+  [`CONTRACT_SCHEMA.md`](CONTRACT_SCHEMA.md) → `Canonical Workload Contract Definition`.
 - Any non-canonical contract shape must be rejected by validation before generation.
 
 ---

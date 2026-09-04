@@ -17,7 +17,7 @@ This is expected for an emerging internal developer platform.
 Canonical contract reference:
 
 - All contract examples in this document follow
-  `CONTRACT_SCHEMA.md` → `Canonical Workload Contract Definition`.
+  [`CONTRACT_SCHEMA.md`](CONTRACT_SCHEMA.md) → `Canonical Workload Contract Definition`.
 
 ---
 
@@ -151,7 +151,7 @@ Portfolio workload migration hook:
 
 # Platform Control Plane
 
-For details on authority layers and control flow, see **CONTROL_PLANE_MODEL.md**.
+For details on authority layers and control flow, see [`CONTROL_PLANE_MODEL.md`](CONTROL_PLANE_MODEL.md).
 
 Formation delivery semantics:
 

@@ -58,7 +58,7 @@ Variance is constrained through:
 - A machine-readable, versioned Workload Contract object
   (`apiVersion` / `kind` / `metadata` / `spec`), conventionally stored as `zave.yaml`.
 - Canonical contract structure is defined in
-  `CONTRACT_SCHEMA.md` → `Canonical Workload Contract Definition`.
+  [`CONTRACT_SCHEMA.md`](CONTRACT_SCHEMA.md) → `Canonical Workload Contract Definition`.
 - Schema validation enforced in CI.
 - Platform-owned delivery strategies (with contract-version support windows).
 - Platform-managed capability modules (extensions).
