@@ -6,31 +6,17 @@ on:
     paths:
       - "**/*.md"
       - ".github/workflows/docs-quality.yml"
-      - ".github/scripts/check-doc-references.py"
   push:
     branches: [main]
     paths:
       - "**/*.md"
       - ".github/workflows/docs-quality.yml"
-      - ".github/scripts/check-doc-references.py"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  reference-check:
-    name: Check Document References
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Verify document references resolve
-        run: python3 .github/scripts/check-doc-references.py
-
   link-check:
     name: Check Documentation Links
     uses: zavestudios/platform-pipelines/.github/workflows/link-check.yml@c0159f042136961310d5dce6ebe780805f7e9781

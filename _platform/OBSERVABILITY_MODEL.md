@@ -136,7 +136,7 @@ It is complete only when all of the following are true:
 4. the live runtime path is verifiable
 5. an operator can follow the documented workflow to see the signal
 
-This follows `DIAGNOSTIC_MODEL.md`: declared truth, rendered truth, controller
+This follows [`DIAGNOSTIC_MODEL.md`](DIAGNOSTIC_MODEL.md): declared truth, rendered truth, controller
 truth, runtime truth, and user-visible behavior must line up.
 
 ---

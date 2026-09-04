@@ -28,36 +28,36 @@ Read this repository like a small canonical handbook, not a wiki.
 
 ### Doctrine
 
-- **ARCHITECTURAL_DOCTRINE_TIER0.md**
+- [ARCHITECTURAL_DOCTRINE_TIER0.md](_platform/ARCHITECTURAL_DOCTRINE_TIER0.md)
   Foundational architectural principles and invariants.
-- **OPERATING_MODEL.md**
+- [OPERATING_MODEL.md](_platform/OPERATING_MODEL.md)
   Repository roles, interaction patterns, authority boundaries, and change protocol.
-- **CONTROL_PLANE_MODEL.md**
+- [CONTROL_PLANE_MODEL.md](_platform/CONTROL_PLANE_MODEL.md)
   Authority layers, control flow, and exception rules.
-- **DIAGNOSTIC_MODEL.md**
+- [DIAGNOSTIC_MODEL.md](_platform/DIAGNOSTIC_MODEL.md)
   Diagnostic reasoning model and gap-analysis lens across control-plane boundaries.
 
 ### Contracts And Generation
 
-- **CONTRACT_SCHEMA.md**
+- [CONTRACT_SCHEMA.md](_platform/CONTRACT_SCHEMA.md)
   Platform interface definitions and required contract structure.
-- **GENERATOR_MODEL.md**
+- [GENERATOR_MODEL.md](_platform/GENERATOR_MODEL.md)
   Generator semantics and template-driven behavior.
 
 ### Platform Behavior
 
-- **GITOPS_MODEL.md**
+- [GITOPS_MODEL.md](_platform/GITOPS_MODEL.md)
   How authoritative desired state is represented and advanced through GitOps.
-- **ADMISSION_POLICY_MODEL.md**
+- [ADMISSION_POLICY_MODEL.md](_platform/ADMISSION_POLICY_MODEL.md)
   Kyverno mutate and validate authoring patterns, and what is enforced versus audited.
-- **OBSERVABILITY_MODEL.md**
+- [OBSERVABILITY_MODEL.md](_platform/OBSERVABILITY_MODEL.md)
   Classification, ownership, and capability materialization rules for logs, metrics, and traces.
-- **observability/OBSERVABILITY_DATA_FLOW.md**
+- [observability/OBSERVABILITY_DATA_FLOW.md](_platform/observability/OBSERVABILITY_DATA_FLOW.md)
   Runtime shape of the observability stack: what pushes, what scrapes, where signals are stored.
 
 ### Operations
 
-- **REPO_TAXONOMY.md**
+- [REPO_TAXONOMY.md](_platform/REPO_TAXONOMY.md)
   Canonical classification of all repositories in the ZaveStudios organization.
 
 ## Precedence
@@ -74,7 +74,7 @@ Lower documents implement or specialize higher ones.
 
 This precedence list is intentionally a conflict-resolution subset, not a complete inventory of `_platform/`. See the table of contents above for the broader file set.
 
-Supporting documents such as `REPO_TAXONOMY.md` and `DIAGNOSTIC_MODEL.md` provide operating guidance and do not establish precedence in conflicts.
+Supporting documents such as [`REPO_TAXONOMY.md`](_platform/REPO_TAXONOMY.md) and [`DIAGNOSTIC_MODEL.md`](_platform/DIAGNOSTIC_MODEL.md) provide operating guidance and do not establish precedence in conflicts.
 
 ## Change Model
 
