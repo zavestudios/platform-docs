@@ -1,0 +1,25 @@
+name: Workflow Validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - ".github/zizmor.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - ".github/zizmor.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  packages: write
+  id-token: write
+
+jobs:
+  validate-workflows:
+    name: Validate GitHub Actions Workflows
+    uses: zavestudios/platform-pipelines/.github/workflows/workflow-ci.yml@c0159f042136961310d5dce6ebe780805f7e9781
