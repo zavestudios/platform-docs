@@ -92,6 +92,7 @@ This table is the canonical in-scope repository set for governed platform analys
 
 | Repository | Category | deploys_runtime | mutates_shared_infrastructure | provides_reusable_capability | consumes_shared_workflows |
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
+| `agent-contract` | control-plane | No | No | Yes | No |
 | `platform-docs` | control-plane | No | No | Yes | No |
 | `airflow` | platform-service | Yes | No | Yes | No |
 | `autonomous-agent` | platform-service | Yes | No | Yes | Yes |
@@ -120,6 +121,24 @@ This table is the canonical in-scope repository set for governed platform analys
 ---
 
 ## Classification Notes
+
+### Control Plane Repositories
+
+**`agent-contract`**
+- Versions the workspace agent contract (`CLAUDE.md` / `AGENTS.md`) and the
+  canonical shared skills under `.agents/skills/`
+- Tracks the working tree at the workspace root deny-by-default: only the
+  contract, the canonical skills, and the per-agent pointer stubs are tracked
+- Defines how agents operate in this workspace: identity, cluster authority,
+  concurrent-agent discipline, and editorial rules
+- Deploys nothing and mutates no infrastructure
+- Classified as `control-plane` (governance contract rather than a workload)
+- provides_reusable_capability: Yes (shared skills consumed by every agent)
+- Private, unlike the public ZaveStudios repositories, because the contract
+  names internal access paths
+- Boundary: agent-contract does not define platform doctrine. Architectural
+  authority remains with `platform-docs`; agent-contract governs agent conduct
+  only, and defers to `platform-docs` where the two touch
 
 ### Platform Service Repositories
 
