@@ -134,11 +134,20 @@ This table is the canonical in-scope repository set for governed platform analys
 - Deploys nothing and mutates no infrastructure
 - Classified as `control-plane` (governance contract rather than a workload)
 - provides_reusable_capability: Yes (shared skills consumed by every agent)
-- Private, unlike the public ZaveStudios repositories, because the contract
-  names internal access paths
+- Private because the contract names internal access paths
 - Boundary: agent-contract does not define platform doctrine. Architectural
   authority remains with `platform-docs`; agent-contract governs agent conduct
   only, and defers to `platform-docs` where the two touch
+
+### Infrastructure Repositories
+
+**`gitops`**
+- Holds the authoritative desired runtime state consumed by Flux and Argo CD
+- Private because it exposes live operational topology, internal addresses,
+  recovery procedures, component versions, secret object names, and edge
+  routing details
+- Controller access uses repository-scoped, read-only credentials; public
+  expression belongs in distilled studies and architecture documentation
 
 ### Platform Service Repositories
 
