@@ -64,15 +64,6 @@ Portfolio is a presentation/domain classification, not a governance exemption.
 
 ---
 
-### `index`
-Repository discovery and navigation surfaces.
-
-These repositories may provide pointers, context, and links for humans and agents.
-They are explicitly non-authoritative and must not define governance doctrine,
-contract schema, lifecycle semantics, or implementation mechanics.
-
----
-
 ### `poc`
 Proof-of-concept implementations, technical proposals, and exploratory work.
 
@@ -112,7 +103,6 @@ This table is the canonical in-scope repository set for governed platform analys
 | `thehouseguy` | tenant | Yes | No | No | Yes |
 | `xavierlopez.me` | portfolio | Yes | No | No | Yes |
 | `zavestudios` | portfolio | Yes | No | No | Yes |
-| `zavestudios-architecture` | index | No | No | No | No |
 | `cloudflare-ai-gateway` | poc | Possibly | No | No | Possibly |
 | `cyberark-migration` | poc | Possibly | No | No | Possibly |
 | `k8s-mcp` | poc | Possibly | No | No | Possibly |
@@ -205,14 +195,6 @@ This table is the canonical in-scope repository set for governed platform analys
 - Classified as `portfolio` (external-facing workload)
 - Must follow the same contract, validation, and lifecycle model as tenant workloads
 
-### Index Repositories
-
-**`zavestudios-architecture`**
-- Landing/index repository for GitHub discovery
-- Points to canonical documentation and active workload/governance repositories
-- Classified as `index` (non-authoritative navigation surface)
-- Must not define governance doctrine, contract schema, lifecycle rules, or platform mechanics
-
 **`xavierlopez.me`**
 - Personal portfolio site (Jekyll)
 - Uses platform-pipelines shared workflows for CI/CD
@@ -299,9 +281,7 @@ Governance implication:
 
 7. `portfolio` repositories are subject to the same platform invariants as `tenant` repositories.
 
-8. `index` repositories are pointer-only surfaces and must not introduce architectural or governance authority.
-
-9. `poc` repositories are explicitly NOT subject to platform contracts, lifecycle rules, or GitOps governance.
+8. `poc` repositories are explicitly NOT subject to platform contracts, lifecycle rules, or GitOps governance.
 
 Ambiguity is architectural debt.
 Classification changes must be deliberate and reviewable.
