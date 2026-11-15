@@ -85,6 +85,7 @@ This table is the canonical in-scope repository set for governed platform analys
 |------------|----------|----------------|-------------------------------|------------------------------|---------------------------|
 | `agent-contract` | control-plane | No | No | Yes | No |
 | `platform-docs` | control-plane | No | No | Yes | No |
+| `practice-observations` | control-plane | No | No | Yes | No |
 | `airflow` | platform-service | Yes | No | Yes | No |
 | `autonomous-agent` | platform-service | Yes | No | Yes | Yes |
 | `engineering-agent` | platform-service | Yes | No | Yes | Yes |
@@ -95,6 +96,7 @@ This table is the canonical in-scope repository set for governed platform analys
 | `zave-cli` | platform-service | No | No | Yes | No |
 | `ansible` | infrastructure | No | Yes | No | No |
 | `gitops` | infrastructure | No | Yes | No | Possibly |
+| `aws-account-infrastructure` | infrastructure | No | Yes | No | No |
 | `kubernetes-platform-infrastructure` | infrastructure | No | Yes | No | No |
 | `listings-ingest` | tenant | Yes | No | No | Yes |
 | `oracle` | tenant | Yes | No | No | Yes |
@@ -129,6 +131,21 @@ This table is the canonical in-scope repository set for governed platform analys
   authority remains with `platform-docs`; agent-contract governs agent conduct
   only, and defers to `platform-docs` where the two touch
 
+**`practice-observations`**
+- Versions the operations-practice method and reusable diagnostic units
+- Does not sequence work; the Command Center and repository issues remain the
+  work log of record
+- Does not define platform architecture; architectural authority remains with
+  `platform-docs`
+- Deploys nothing and mutates no infrastructure
+- Classified as `control-plane` because it defines an operating practice and
+  preserves reusable methods rather than implementing a workload
+- provides_reusable_capability: Yes (diagnostic methods consumed by humans and
+  agents)
+- Private because units may name internal topology, incomplete evidence, and
+  operational observations; public expression belongs in distilled studies
+  rather than direct publication of the practice repository
+
 ### Infrastructure Repositories
 
 **`gitops`**
@@ -138,6 +155,18 @@ This table is the canonical in-scope repository set for governed platform analys
   routing details
 - Controller access uses repository-scoped, read-only credentials; public
   expression belongs in distilled studies and architecture documentation
+
+**`aws-account-infrastructure`**
+- Defines account-level AWS infrastructure shared by multiple Terraform roots
+- Owns the versioned, encrypted S3 backend used for remote Terraform state and
+  native lock files
+- May own account-wide CI identity and guardrails, including the GitHub Actions
+  OIDC provider and scoped Terraform delivery roles
+- Deploys no workload runtime but mutates shared infrastructure
+- Classified as `infrastructure` because its resources establish account-wide
+  substrate and authority boundaries rather than tenant behavior
+- Private because state topology, IAM trust boundaries, and account-specific
+  identifiers are operational details
 
 ### Platform Service Repositories
 
